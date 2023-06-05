@@ -69,15 +69,19 @@ public class LinkedList {
         p.next= current;
         current.next = q;
     }
-    public void removeBeginning(){
+    public void removeAtBeginning(){
         Node cur = head;
        // System.out.print("curr==="+head);
         head = cur.next;
         cur.next = null;
 
     }
+    public void removeAtEnd() {
+        Node cur = head;
 
-    public static void main(String[] args){
+    }
+
+        public static void main(String[] args){
        LinkedList l = new LinkedList();
        l.insert(1);
        l.insert(2);
@@ -86,7 +90,7 @@ public class LinkedList {
        l.insertBeginning(5);
        l.insertAtIndex(8,2);
        l.insertAtIndex(80,1);
-       l.removeBeginning();
+       l.removeAtBeginning();
 
        List<Integer> lst =  l.read();
        System.out.print(lst);
