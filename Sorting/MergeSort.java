@@ -1,18 +1,6 @@
 package Sorting;
 
 public class MergeSort {
-    public void partition(int a[], int l, int r){
-
-        if(l<r) {
-
-
-            int mid = l + (r - 1) / 2;
-
-            partition(a, l, mid);
-            partition(a, mid + 1, r);
-            merge(a, l, mid, r);
-        }
-    }
 
     public void merge(int arr[],int l, int m, int r) {
         int n1 = m - l + 1;
@@ -43,6 +31,7 @@ public class MergeSort {
                 j++;
             }
             k++;
+
         }
 
         // Copy remaining elements of L[] if any
@@ -57,6 +46,22 @@ public class MergeSort {
             arr[k] = R[j];
             j++;
             k++;
+        }
+    }
+
+    void partition(int arr[], int l, int r)
+    {
+        if (l < r) {
+
+            // Find the middle point
+            int m = l + (r - l) / 2;
+
+            // Sort first and second halves
+            partition(arr, l, m);
+            partition(arr, m + 1, r);
+
+            // Merge the sorted halves
+            merge(arr, l, m, r);
         }
     }
     static void printArray(int arr[])
