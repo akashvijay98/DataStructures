@@ -71,6 +71,21 @@ public class BinarySearchTree {
 
     }
 
+    public Node deleteMin(Node root){
+
+        if(root.left == null){
+
+            Node cur = root;
+            root = null;
+            return cur.right;
+
+        }
+
+        root.left = deleteMin(root.left);
+        return root;
+
+    }
+
 
 
     public static void main(String[] args){
@@ -82,6 +97,7 @@ public class BinarySearchTree {
         bs.insert(6);
         bs.insert(12);
         bs.insert(10);
+        bs.deleteMin(bs.root);
         System.out.println(bs.inOrder());
 
 
