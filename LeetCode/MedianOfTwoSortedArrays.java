@@ -62,6 +62,12 @@ class MedianOfTwoSortedArrays {
         int[] array2 = {3,4,5};
 
         double result  = obj.findMedian(array1, array2);
+
+        int a= 9;
+        double b = a;
+
+        System.out.println(b);
+
         System.out.println("result= "+result);
 
     }
