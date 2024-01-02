@@ -1,0 +1,39 @@
+class Solution {
+    public int maxArea(int[] height) {
+        
+        //initialize left pointer, right pointer and maxArea
+        int l=0;
+        int r = height.length-1;
+        int maxArea =0;
+
+        // if right pointer and left pointer meet, then we have came across all the elemetns of the array.
+        while(l < r){
+
+
+            int area = Math.min(height[l] , height[r]) * (r - l);
+            maxArea = Math.max(area,maxArea);
+
+            if(height[l]<height[r]){
+                
+                // if left side height is smaller than the right side height increment the left pointer so that we get the next bigger height to get bigger area 
+
+                l+=1;
+
+            }
+
+             // if left side height is bigger than the right side height decrement the right pointer so that we get the next bigger height to get bigger area
+            else if(height[r]<height[l]){
+                
+                r-=1;
+            }
+
+            else{
+    
+                // can increment either right or left and we can also simplify by removing one if condition 
+                r-=1;
+            }
+
+        }
+        return maxArea;
+    }
+}
