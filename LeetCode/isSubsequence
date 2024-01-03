@@ -1,0 +1,28 @@
+class Solution {
+    public boolean isSubsequence(String s, String t) {
+        
+        int p=0;
+        int q=0;
+
+        // loop till either of the pointers come to the end of the strings
+        while(p<s.length() && q<t.length()){
+            if(s.charAt(p)== t.charAt(q)){
+                p+=1;
+                q+=1;
+            }
+            else{
+                q+=1;
+            }
+        }
+
+        //return true if all the characters in the small strings are present in the big string.
+        if(p==s.length()){
+            return true;
+        }
+        else{
+            return false;
+        }
+
+
+    }
+}
