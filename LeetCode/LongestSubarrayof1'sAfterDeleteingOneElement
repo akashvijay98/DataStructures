@@ -1,0 +1,29 @@
+class Solution {
+    public int longestSubarray(int[] nums) {
+        int maxCount=0;
+        int left =0;
+        int zeroCount =0;
+        for(int right =0; right<nums.length; right++){
+           if(nums[right] ==0){
+               zeroCount +=1;
+           }
+
+            // we can substitute only 1 zero as 1, so if the count exceeds 1 we need to delete a zero and 
+           //whatever 1's were counted to the left of the deleted zero are no more required so keep incrementing the left pointer 
+          //until we reach to the 1 to the right of the deleted 0 
+            while(zeroCount>1){
+                if(nums[left]==0){
+                    zeroCount-=1;
+                }
+                left+=1;
+            }
+            maxCount = Math.max(maxCount,right-left);
+
+
+
+        }
+        return maxCount;
+    }
+       
+    
+}
