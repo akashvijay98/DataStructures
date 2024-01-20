@@ -1,0 +1,41 @@
+class Solution {
+    public int equalPairs(int[][] grid) {
+
+        int result =0;
+        int n = grid.length;
+        HashMap <String,Integer> map1 = new HashMap<>();
+        HashMap <String, Integer> map2 = new HashMap<>();
+
+        for(int[] row: grid){
+       
+            // traverse the rows and hash the values as for example 1#2#4 along with its frequency
+            StringBuilder sb = new StringBuilder();
+            for(int i:row){
+                sb.append(i).append('#');
+            }
+            map1.put(sb.toString(), map1.getOrDefault(sb.toString(),0)+1);
+
+        }
+
+        for(int j=0;j<n;j++){
+            StringBuilder sb = new StringBuilder();
+            // traverse the columns and hash the values as for example 1#2#4 along with its frequency
+            for(int i=0;i<n;i++){
+
+                //grid[i][j] represents grid[columnNo][rowNo]
+                sb.append(grid[i][j]).append('#');
+            }
+            map2.put(sb.toString(), map2.getOrDefault(sb.toString(),0)+1);
+        }
+
+        for(Map.Entry<String, Integer> entry: map1.entrySet()){
+            String rhash = entry.getKey();
+            if(map2.containsKey(rhash)){
+
+                // if hash value matches in both column and row hashMap(map1,map2) then multiply frequencies of both HashMap keys.
+                result+= map1.get(rhash)*map2.get(rhash);
+            }
+        }
+        return result;
+    }
+}
