@@ -4,10 +4,13 @@ class Solution {
         int[] result = new int[temperatures.length];
 
         for(int i=0;i<temperatures.length;i++){
+            // if stack is not empty and the temperature of the topmost index in the stack is "less than" the temperature of the current element 
             while(!stack.empty() && temperatures[stack.peek()]<temperatures[i]){
+                //if so then subtract the index of the current temperature with the  topmost index in the stack to get the next warmer day.
                 result[stack.peek()] = i-stack.pop();
             
             }
+            //push the index of the current temeperature element in the stack.
             stack.push(i);
         }
         return result;
