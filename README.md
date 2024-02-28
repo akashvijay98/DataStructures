@@ -11,7 +11,7 @@
    initialise two pointers left and right at start and end position of the array.
    keep finding the maximum area between the two pointers until l<r.
 
-### [Daily Temperatures(https://leetcode.com/problems/daily-temperatures/)] ### 
+### Daily Temperatures https://leetcode.com/problems/daily-temperatures/ ### 
   ***approach***
    ***stacks***
 
