@@ -17,9 +17,9 @@
 
   We are going to store the index of the temperatures array element in the stack.
   
-  first we iterate through the temperatures array and
-    1.we check if the stack is not empty and also check:
-    2.if the topmost element in the stack is less than the current element of the temperatures array (temperatures[stack.peek()] < temperatures[i])).
+  - first we iterate through the temperatures array and
+    1. we check if the stack is not empty and also check:
+    2. if the topmost element in the stack is less than the current element of the temperatures array (temperatures[stack.peek()] < temperatures[i])).
         a.if yes then we find the difference between i and stack.peek() ( because this is the number of days from temperatures[stack.peek()]
         to the next warmer day  (temperature[i]).
         remember if the condition satisfies, then the temperature at stack.peek() will always be less than temperature at i. so we do 
