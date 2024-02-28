@@ -15,7 +15,7 @@
   ***approach***
    ***stacks***
 
-  We are going to store the index of the temperatures array element in the stack.
+  We are going to store the index of the temperatures array elements in the stack.
   
     first we iterate through the temperatures array and
     1. we check if the stack is not empty and also check:
