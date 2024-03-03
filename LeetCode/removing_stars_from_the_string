@@ -1,0 +1,34 @@
+class Solution {
+    public String removeStars(String s) {
+
+        String result="";
+
+        Stack<Character> stack = new Stack<>();
+
+        for(int i=0; i<s.length();i++){
+            Character c= s.charAt(i);
+
+            if(c.equals('*')){
+                if(!stack.isEmpty()){
+                stack.pop();
+                }
+            }
+       
+            else if(!c.equals('*') ){
+                stack.push(c);
+            }
+          
+
+        }
+
+        System.out.println("stack"+stack);
+        while (!stack.isEmpty()) {
+            result = stack.pop() + result;  // Concatenation in reverse order
+}
+       
+        return result;
+
+
+        
+    }
+}
