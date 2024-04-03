@@ -11,6 +11,9 @@ class Solution {
 
             if(map.containsKey(rightChar)){
                
+               // 1.suppose start is ahead of the last index of windowEnd, then max will be start 
+               //--------->(Example "dvjfdg"). here when start is at index 1 (v), and when d repeats, well take start instead of d's index'
+               // 2.else windowEnd will be ahead of start 
                start = Math.max(start, map.get(rightChar)+1);
 
             }
