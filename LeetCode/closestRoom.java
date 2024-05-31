@@ -51,10 +51,14 @@ class Solution {
 
         for(int i=index+1; i<rooms.length;i++){
             int temp = Math.abs(id-rooms[i][0]);
+
+            // incase the difference between preferredId != room[index][0], then take the id with the minimum difference
             if(temp<min){
                 ans=i;
                 min = temp;
             }
+
+            // else if preferredId == room[index][0], then take the id with minimum value, not minimum difference both are different things.
             else if(temp == min){
                 if(rooms[i][0]<rooms[ans][0]){
                     ans = i;
