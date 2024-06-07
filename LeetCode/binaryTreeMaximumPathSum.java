@@ -55,11 +55,9 @@ class Solution {
             return 0;
         }
         
-        int left = dfs(root.left);
-        int right = dfs(root.right);
+        int left = Math.max(dfs(root.left),0);
+        int right = Math.max(dfs(root.right),0);
 
-        left = Math.max(left,0);
-        right = Math.max(right,0);
 
         max = Math.max(max, (root.val + left + right));
 
