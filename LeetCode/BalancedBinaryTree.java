@@ -2,8 +2,9 @@ package LeetCode;
 
 import Trees.BinarySearchTree;
 
-
+//check if the binary tree is balanced
 class BalancedBinaryTree {
+    
 
     class Node{
         int val;
