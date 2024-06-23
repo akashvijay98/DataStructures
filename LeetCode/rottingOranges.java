@@ -6,6 +6,8 @@ class Solution {
 
         int[][] directions = new int[][] {{0,-1},{0,1},{1,0},{-1,0}};
 
+        // first lets count all the fresh oranges
+        // we also add the rotten oranges to the queue
         for(int r = 0; r< grid.length; r++){
             for(int c=0;c<grid[0].length;c++){
                 if(grid[r][c]==1){
@@ -17,6 +19,7 @@ class Solution {
             }
         }
 
+        //the loop will run until there are no more fresh oranges to get rotten
         while(!q.isEmpty() && freshOranges>0){
 
             int size = q.size();
@@ -41,6 +44,8 @@ class Solution {
                     }
                 }
             }
+            // when the for loop finishes executing, it is counted as a minute since all the initial items 
+            // before the start of for loop in the que are removed and processed
             minutesCount++;
 
         }
