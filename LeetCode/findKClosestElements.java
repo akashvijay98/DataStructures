@@ -19,6 +19,9 @@ class Solution {
             
             
             if(arr[mid]==x){
+                
+                // if an element if found, then we just keep mid as the left most position because that is where we begin
+                // our expansion of sliding window and also that is the position with the minimum difference between x and array element
                 left = mid;
                 break;
             }else if(arr[mid]<x){
