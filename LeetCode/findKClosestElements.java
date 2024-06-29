@@ -14,14 +14,18 @@ class Solution {
         }
         
 // Binary search for finding the closest possible position.
-        while(left<right){
+        while(left<=right){
             mid = (left + right) / 2;
             
             
-            if(arr[mid]>=x){
-                right = mid;
-            }else{
+            if(arr[mid]==x){
+                left = mid;
+                break;
+            }else if(arr[mid]<x){
                 left = mid+1;
+            }
+            else{
+                right = mid-1;
             }
         }
 
@@ -36,7 +40,7 @@ class Solution {
 
             if(right==arr.length || Math.abs(arr[left]-x) <= Math.abs(arr[right]-x)){
                 left-=1;
-            }
+             }
             else{
                 right+=1;
             }
