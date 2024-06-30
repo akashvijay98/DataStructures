@@ -9,6 +9,11 @@ class Solution {
 
         int[] result = new int[2];
 
+        
+        // for array [5,7,8,8,8,8,10] and target 8
+        // we first find the starting index of 8 which is 2
+        // then we find the ending index of 8 which is 5
+        
         int leftIndex = findBound(nums,target,true);
         result[0]=leftIndex;
 
