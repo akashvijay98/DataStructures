@@ -1,0 +1,83 @@
+class LRUCache {
+    int capacity;
+    Map<Integer, ListNode> dic;
+    ListNode head;
+    ListNode tail;
+    public LRUCache(int capacity) {
+        this.capacity = capacity;
+        dic = new HashMap<>();
+
+        head = new ListNode(-1,-1);
+        tail = new ListNode(-1,-1);
+
+        head.next = tail;
+        tail.prev = head;
+
+        }
+    
+    public int get(int key) {
+        if(!dic.containsKey(key)){
+            return -1;
+        }
+        // we get the key, then we need move the related node to the back, because it is the most recently used node.
+
+        ListNode node = dic.get(key);
+        remove(node); // remove the node;
+        add(node); // add the node to the back of the doubly linked list
+        return node.val;
+    }
+    
+    // we are using the node, as well as updating its value
+    // so we first remove the node, then create a new node with updated values and insert it to the back of the doubly LL
+    public void put(int key, int value) {
+        if(dic.containsKey(key)){
+            ListNode oldNode = dic.get(key);
+            remove(oldNode);
+        }
+        ListNode node = new ListNode(key,value);
+
+        dic.put(key,node);
+        add(node);
+
+        if(dic.size() > capacity){
+            ListNode nodeToDelete = head.next;
+            remove(nodeToDelete);
+            dic.remove(nodeToDelete.key);
+        }
+    }
+
+    public void add(ListNode node){
+        ListNode previousEnd = tail.prev;
+        previousEnd.next= node;
+        node.prev = previousEnd;
+        node.next = tail;
+        tail.prev = node;
+    }
+
+    public void remove(ListNode node){
+        ListNode previousNode = node.prev;
+        ListNode nextNode = node.next;
+
+        previousNode.next = nextNode;
+        nextNode.prev = previousNode;
+    }
+}
+
+/**
+ * Your LRUCache object will be instantiated and called as such:
+ * LRUCache obj = new LRUCache(capacity);
+ * int param_1 = obj.get(key);
+ * obj.put(key,value);
+ */
+
+ class ListNode{
+    int key;
+    int val;
+    ListNode next;
+    ListNode prev;
+
+    public ListNode(int key, int val){
+        this.key = key;
+        this.val = val;
+    }
+ }
