@@ -1,6 +1,9 @@
+// source: https://neetcode.io/problems/reconstruct-flight-path
 public class Solution {
     public List<String> findItinerary(List<List<String>> tickets) {
         Map<String, List<String>> adj = new HashMap<>();
+
+        //build adjacency map to map source: [destination]
         for (List<String> ticket : tickets) {
             adj.putIfAbsent(ticket.get(0), new ArrayList<>());
         }
@@ -13,6 +16,8 @@ public class Solution {
         List<String> res = new ArrayList<>();
         res.add("JFK");
         
+        // if all the airports are visited, return the result
+        //  tickets.size() + 1 because we are including JFK(initial source)
         if (dfs("JFK", res, adj, tickets.size() + 1)) {
             return res;
         }
@@ -34,7 +39,11 @@ public class Solution {
             String v = temp.get(i);
             adj.get(src).remove(i);
             res.add(v);
+            // if all the nodes are visited, then return true and break for loop
             if (dfs(v, res, adj, targetLen)) return true;
+
+            // add v node to the i'th index inside the list adj.get(src)
+            // we do this because the list is lexographically sorted
             adj.get(src).add(i, v);
             res.remove(res.size() - 1);
         }
