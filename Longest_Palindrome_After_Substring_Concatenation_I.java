@@ -1,3 +1,11 @@
+
+/*
+    step 1: we generate all possible substrings for both strings and add them to seperate lists.
+    step 2: we then check for palindromes against all possible combinations of substrings in both lists.
+    step 3. we then find the longest palindromes out of all
+
+*/
+
 class Solution {
     public int longestPalindrome(String s, String t) {
         List<String> sList = generateAllPossibleSubstrings(s);
