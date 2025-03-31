@@ -118,5 +118,3 @@
 | [Koko Eating Bananas](https://leetcode.com/problems/koko-eating-bananas/) | Medium |
 
 ---
-
-This format ensures **clear separation by topic** while maintaining readability. Let me know if you'd like any further adjustments! 🚀
