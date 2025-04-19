@@ -1,61 +1,65 @@
-package Sorting;
+public class quicksort {
 
-import java.util.Arrays;
+    void sort(int[] a, int start, int end) {
+        // keep sorting until start<end
+        if (start < end) {
+            int index = partition(a, start, end);
 
-public class QuickSort {
-
-    public int partition(int a[],int start , int end){
-
-        int pivot = a[end];
-        int pivotIndex = start;
-
-        if(start<end){
-            for(int i=start ; i< a.length;i++){
-
-                if(a[i]< pivot){
-                    swap(a, pivotIndex, i);
-                    pivotIndex+=1;
-                }
-
-            }
-            swap(a,pivotIndex,end);
-            //System.out.println("intermediate array Result"+ Arrays.toString(a));
-           // System.out.println("End"+ end);
-
-            //System.out.println("PivotIndex"+ pivotIndex);
-
+            sort(a, start, index - 1);
+            sort(a, index + 1, end);
         }
-        return pivotIndex;
     }
 
-    public void sort(int a[], int start, int end){
-        if(start<end) {
-
-            int partitionIndex = partition(a, start, end);
-
-            sort(a, start, partitionIndex-1);
-            sort(a, partitionIndex + 1, end);
-
-        }
-
-    }
-
-    static void swap(int a[], int i, int j){
-
+    void swap(int[] a, int i, int j) {
         int temp = a[i];
         a[i] = a[j];
         a[j] = temp;
 
     }
 
-    public static void main(String args[]){
+    // move all elements less than pivot to its left
+    // after the for loop, the position of startIndex is the position where all elements before the position are smaller.
+    // hence swap with pivot elements so that smaller elements < pivot < larger elements
+    int partition(int[] a, int start, int end) {
+        int pivot = a[end];
+        int startIndex = start;
 
-        int a[] ={7,3,5,1,4,40,32,50,21};
+            for (int i = start; i < end; i++) {
+                if (a[i] < pivot) {
+                    swap(a, startIndex, i);
+                    startIndex++;
+                }
 
-        QuickSort obj = new QuickSort();
-        obj.sort(a,0, a.length-1);
-        System.out.println("Sorted Array ==>"+Arrays.toString(a));
+            }
+
+
+
+
+
+        swap(a, startIndex, end);
+        return startIndex;
 
     }
 
+
+
+
+
+
+
+
+
+    public static void main(String[] args){
+
+        int[] arr = new int[] {1,3,8,2,4};
+
+        quicksort q = new quicksort();
+
+        q.sort(arr,0,arr.length-1);
+
+        for(int i=0;i<arr.length;i++){
+            System.out.println(arr[i]);
+        }
+
+    }
 }
