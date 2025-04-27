@@ -116,5 +116,6 @@
 | [Successful Pairs of Spells and Potions](https://leetcode.com/problems/successful-pairs-of-spells-and-potions/) | Medium |
 | [Find Peak Element](https://leetcode.com/problems/find-peak-element/) | Medium |
 | [Koko Eating Bananas](https://leetcode.com/problems/koko-eating-bananas/) | Medium |
-
+| [Count the Number of Fair Pairs](https://leetcode.com/problems/count-the-number-of-fair-pairs/) | Medium |
+ 
 ---
