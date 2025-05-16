@@ -1,56 +1,41 @@
 class Solution {
-
-    /*
-        first add the '(' indexes to the stack
-
-        if there charAt(i) equals ')':  
-            if stack is not empty : we pop the index of the latest '(' to balance
-            else if stack is empty, we mark the index of ')' in the indexToRemove set
-             
-        we finish the loop and check if the stack is still holding some indexes (unbalanced brackets)
-            if yes, then we mark all indexes by added them to the indexToRemove set
-
-        lastly we iterate the indexes of the string and if any of the indexes are marked, we just skip them, or else we append the character at index to the StringBuilder sb.
-
-        finaly convert sb to string and return the result
-    
-    */
-
     public String minRemoveToMakeValid(String s) {
-        Set<Integer> indexesToRemove = new HashSet<>();
-        StringBuilder sb = new StringBuilder();
 
+        // copy String s to StringBuilder sb
+        StringBuilder sb = new StringBuilder(s);
+
+        // stack will store the index of opening brackets "(,{,["
         Stack<Integer> stack = new Stack<>();
 
-        int n = s.length();
-        for(int i=0;i<n;i++){
+        for(int i=0;i<s.length();i++){
             char c = s.charAt(i);
 
             if(c == '('){
                 stack.push(i);
-            }
+            } 
+
+            // first we will validate closing brackets
+            // we will check if for every closing bracket "),},]" there is an opening bracket "(,{,["
             else if(c==')'){
                 if(!stack.isEmpty()){
                     stack.pop();
                 }
                 else{
-                    indexesToRemove.add(i);
+                    // we will set invalid brackets to '*'
+                    sb.setCharAt(i,'*');
                 }
             }
         }
-
+        // next we will validate the opening brackets
+        // if the stack is still not empty, that means we have opening brackets which have no closing brackets
         while(!stack.isEmpty()){
-            indexesToRemove.add(stack.pop());
+            
+            int idx = stack.pop();
+
+             // we will set invalid brackets to '*'
+            sb.setCharAt(idx,'*');
         }
 
-        for(int i=0;i<n;i++){
-            if(indexesToRemove.contains(i)){
-                //skip the indexes which needs to be remvoed
-                continue;
-            }
-            sb.append(s.charAt(i));
-        }
-
-        return sb.toString();
+        return sb.toString().replaceAll("\\*","");
     }
 }
