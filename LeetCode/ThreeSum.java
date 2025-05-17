@@ -1,51 +1,40 @@
-package LeetCode;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-class ThreeSum {
+class Solution {
     public List<List<Integer>> threeSum(int[] nums) {
-        int size = nums.length;
-
-        List<List<Integer>> finalList = new ArrayList<List<Integer>>();
-
+        List<List<Integer>> result = new ArrayList<>();
         Arrays.sort(nums);
 
-        for(int i=0;i<size-2;i++){
-            if (i > 0 && nums[i] == nums[i - 1]) {
-                continue;
-            }
-            int lo = i+1;
-            int  hi = size-1;
+        for(int i=0;i<nums.length-2;i++){
 
-            while(lo < hi){
-                int sum = nums[i]+nums[lo]+nums[hi];
+            // skip duplicate values of nums[i]
+            if(i>0 && nums[i]==nums[i-1]) continue;
 
-                if(sum==0){
-                    finalList.add(Arrays.asList(nums[i],nums[lo],nums[hi]));
+            // two sum
+            int lo=i+1, hi = nums.length-1;
+            while(lo<hi){
+                int sum = nums[i] + nums[lo] + nums[hi];
 
-                    while(lo<hi && nums[lo]==nums[lo+1]){
+                if(sum>0){
+                  hi--;
+                }
+                else if(sum<0){
+                    lo++;
+                }
+                else{
+                    result.add(Arrays.asList(nums[i],nums[lo],nums[hi]));
+                    hi--;
+                    lo++;
+
+                    // check for duplcate values of nums[lo]
+                    while(lo<hi && nums[lo]==nums[lo-1]){
                         lo++;
                     }
-                    while(lo<hi && nums[hi]==nums[hi-1]){
-                        hi--;
-                    }
-                    lo++;
-                    hi--;
 
-                }
-                if(sum<0){
-                    lo++;
-                }
-                else if(sum>0){
-                    hi--;
+                    // we dont need to check for duplicate values of hi because: lo is already handled, so combination will not repeat
+
+                    
                 }
             }
-
-
-        }
-        return finalList;
-
+        }   
+        return result;
     }
 }
