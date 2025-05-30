@@ -1,63 +1,51 @@
 class Solution {
     public int[] searchRange(int[] nums, int target) {
-
-       
-
-        if(nums.length==0){
-            return new int[] {-1,-1};
-        }
+        int lo=0,hi=nums.length-1;
 
         int[] result = new int[2];
 
-        
-        // for array [5,7,8,8,8,8,10] and target 8
-        // we first find the starting index of 8 which is 2
-        // then we find the ending index of 8 which is 5
-        
-        int leftIndex = findBound(nums,target,true);
-        result[0]=leftIndex;
+        int index = -1;
 
-        int rightIndex = findBound(nums,target,false);
-        result[1]= rightIndex;
+        while(lo<=hi){
+            int mid= (lo+hi)/2;
 
-        
-
-        return result ;
-    }
-
-    public int findBound(int[]  nums, int target, boolean isFirst){
-        int left =0, right = nums.length-1;
-        while(left<=right){
-            int mid = (left+right)/2;
-
-           
             if(nums[mid]==target){
-                if(isFirst){
-                    if(left==mid || nums[mid-1] != target){
-                        return mid;
-                    }
-                    else{
-                        right = mid-1;
-                    }  
-                }
-                else{
-                    if(right==mid || nums[mid+1] != target){
-                        return mid;
-                    }
-                    else{
-                        left = mid+1;
-                    }
-                }                     
-
+                index = mid;
+                hi=mid-1;
             }
-
             else if(nums[mid]>target){
-                right = mid-1;
+                hi=mid-1;
             }
             else{
-                left = mid+1;
+                lo=mid+1;
             }
         }
-        return -1;
+
+          result[0] = index;
+        
+         lo=0;
+         hi=nums.length-1;
+         index = -1;
+
+        while(lo<=hi){
+            int mid = (lo+hi)/2;
+
+            if(nums[mid]==target){
+                index = mid;
+                lo = mid+1;
+            }
+            else if(nums[mid]<target){
+                lo=mid+1;
+            }
+            else{
+                hi=mid-1;
+            }
+        }
+
+     
+            result[1]=index;
+        
+
+        return result;
     }
 }
