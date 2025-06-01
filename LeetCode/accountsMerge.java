@@ -1,66 +1,84 @@
 class Solution {
-    HashSet<String> visited = new HashSet<>();
-    Map<String, List<String>> adjacent = new HashMap<String, List<String>>();
-    
-    private void DFS(List<String> mergedAccount, String email) {
-        visited.add(email);
-        // Add the email vector that contains the current component's emails
-        mergedAccount.add(email);
+
+    /*
+
+        Approach: 1. map email to email
+
+        e.g [akash, a, b, c]
+            [akash, c, d, e]
+
+            map{a:[b,c], c:[d,e]}
+
+                    a -> [b, c]
+                             |
+                             [d, e]
+
+        2. map mail to name
+            e.g map: {a:akash, b: akash, c:akash ..... e:akash}
+
         
-        if (!adjacent.containsKey(email)) {
-            return;
-        }
-        
-        for (String neighbor : adjacent.get(email)) {
-            if (!visited.contains(neighbor)) {
-                DFS(mergedAccount, neighbor);
+        3. perform dfs from (a) to find all connecting nodes and add them  to the list
+
+            list = [a,b,c,d,e]
+
+
+    */
+
+
+    HashSet<String> set = new HashSet<>(); 
+    HashMap<String,List<String>> map = new HashMap<>();
+    HashMap<String,String> emailToName = new  HashMap<>();
+    public List<List<String>> accountsMerge(List<List<String>> accounts) {
+      
+       
+
+        List<List<String>> result = new ArrayList<>();
+
+        for(List<String> acc : accounts){
+            String firstEmail = acc.get(1);
+            String name = acc.get(0);
+
+            emailToName.put(firstEmail,name);
+
+            for(int i = 1;i<acc.size();i++){
+                String curEmail = acc.get(i); 
+
+              
+                map.computeIfAbsent(firstEmail,  x -> new ArrayList<>()).add(curEmail);
+                map.computeIfAbsent(curEmail, x -> new ArrayList<>()).add(firstEmail);
+                 
+
+                emailToName.put(curEmail, name);
             }
         }
+
+        for(String key: map.keySet()){
+           
+            if(!set.contains(key)){
+                List<String> con = new ArrayList<>();
+
+                dfs(key,con);
+                Collections.sort(con);
+                con.add(0,emailToName.get(key));
+
+                result.add(con);
+            } 
+            
+
+        }
+        return result;
     }
-    
-    public List<List<String>> accountsMerge(List<List<String>> accountList) {
-        int accountListSize = accountList.size();
-        
-        for (List<String> account : accountList) {
-            int accountSize = account.size();
-            
-            // Building adjacency list
-            // Adding edge between first email to all other emails in the account
-            String accountFirstEmail = account.get(1);
-            for (int j = 2; j < accountSize; j++) {
-                String accountEmail = account.get(j);
-                
-                if (!adjacent.containsKey(accountFirstEmail)) {
-                    adjacent.put(accountFirstEmail, new ArrayList<String>());
-                }
-                adjacent.get(accountFirstEmail).add(accountEmail);
-                
-                if (!adjacent.containsKey(accountEmail)) {
-                    adjacent.put(accountEmail, new ArrayList<String>());
-                }
-                adjacent.get(accountEmail).add(accountFirstEmail);
+
+    private void dfs(String node, List<String> list){
+        set.add(node);
+        list.add(node);
+
+        for(String nei : map.get(node)){
+            if(!set.contains(nei)){
+                dfs(nei,list);
             }
-        }
-        
-        // Traverse over all th accounts to store components
-        List<List<String>> mergedAccounts = new ArrayList<>();
-        for (List<String> account : accountList) {
-            String accountName = account.get(0);
-            String accountFirstEmail = account.get(1);
             
-            // If email is visited, then it's a part of different component
-            // Hence perform DFS only if email is not visited yet
-            if (!visited.contains(accountFirstEmail)) {
-                List<String> mergedAccount = new ArrayList<>();
-                // Adding account name at the 0th index
-                mergedAccount.add(accountName);
-                
-                DFS(mergedAccount, accountFirstEmail);
-                Collections.sort(mergedAccount.subList(1, mergedAccount.size())); 
-                mergedAccounts.add(mergedAccount);
-            }
         }
-        
-        return mergedAccounts;
+
     }
 }
