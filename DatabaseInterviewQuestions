@@ -1,0 +1,4 @@
+1. In active-active databases (like Aurora - Postgres), how would you resolve write conflicts?
+2. Did you use optimistic concurrency control or application-side merge logic in Go?
+3. How do you detect and debug performance issues in a managed SQL DB?
+4. When is a JOIN likely to become a bottleneck, and how would you fix it?
