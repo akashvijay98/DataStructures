@@ -32,3 +32,58 @@ public int getMaximumCategoryMaxCount(String s) {
 
     return maxCount;
 }
+// get dna Sequence
+
+import java.util.*;
+
+public class Solution {
+
+    public boolean[] getSequence(List<List<String>> dnaPairs) {
+        boolean[] result = new boolean[dnaPairs.size()];
+        int index = 0;
+
+        for (List<String> pair : dnaPairs) {
+            String s1 = pair.get(0);
+            String s2 = pair.get(1);
+
+            boolean[] seen = new boolean[26];
+            for (char c : s1.toCharArray()) {
+                seen[c - 'a'] = true;
+            }
+
+            boolean isSimilar = false;
+            for (char c : s2.toCharArray()) {
+                if (seen[c - 'a']) {
+                    isSimilar = true;
+                    break;
+                }
+            }
+
+            result[index++] = isSimilar;
+        }
+
+        return result;
+    }
+
+    // main method to test
+    public static void main(String[] args) {
+        Solution sol = new Solution();
+
+        List<List<String>> testPairs = Arrays.asList(
+            Arrays.asList("abc", "cab"),      // true
+            Arrays.asList("abc", "xyz"),      // false
+            Arrays.asList("aabb", "abcc"),    // true
+            Arrays.asList("aaa", "bbb"),      // false
+            Arrays.asList("", ""),            // false
+            Arrays.asList("a", "")            // false
+        );
+
+        boolean[] results = sol.getSequence(testPairs);
+
+        System.out.println("Similar DNA Pairs:");
+        for (int i = 0; i < results.length; i++) {
+            System.out.println("Pair " + (i + 1) + ": " + results[i]);
+        }
+    }
+}
+
