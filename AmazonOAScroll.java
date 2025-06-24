@@ -312,3 +312,65 @@ public class AntivirusSecurity {
     }
 }
 
+
+// 5. find hash - greedy approach
+/*
+    Algorithm Logic:
+        1. Sort by Parameter Values: We process the parameters in ascending order of their values. This is because smaller param[i] values have fewer possible hash values (0 to param[i]-1), so they have more constraints.
+        2. Greedy Assignment: For each parameter (processed in sorted order), we assign the smallest possible hash value that hasn't been used yet.
+        3. Track Used Values: We maintain a set of already assigned hash values to avoid duplicates.
+*/
+
+import java.util.*;
+
+public class Solution {
+    
+    public static int findHash(int[] param) {
+        int n = param.length;
+        
+        // Create pairs of (param[i], index) and sort by param value
+        Integer[] indices = new Integer[n];
+        for (int i = 0; i < n; i++) {
+            indices[i] = i;
+        }
+        
+        // Sort indices based on param values (ascending order)
+        Arrays.sort(indices, (a, b) -> Integer.compare(param[a], param[b]));
+        
+        Set<Integer> usedHashValues = new HashSet<>();
+        
+        // Process parameters in ascending order of their values
+        for (int idx : indices) {
+            int paramValue = param[idx];
+            
+            // Find the smallest hash value (0 to paramValue-1) that hasn't been used
+            for (int hashVal = 0; hashVal < paramValue; hashVal++) {
+                if (!usedHashValues.contains(hashVal)) {
+                    usedHashValues.add(hashVal);
+                    break;
+                }
+            }
+        }
+        
+        return usedHashValues.size();
+    }
+    
+    // Test method
+    public static void main(String[] args) {
+        // Example 1
+        int[] param1 = {1, 2, 4};
+        System.out.println("Example 1: " + findHash(param1)); // Expected: 3
+        
+        // Example 2
+        int[] param2 = {1, 1, 1};
+        System.out.println("Example 2: " + findHash(param2)); // Expected: 1
+        
+        // Additional test cases
+        int[] param3 = {2, 3, 5};
+        System.out.println("Test 3: " + findHash(param3)); // Expected: 3
+        
+        int[] param4 = {2, 2, 2};
+        System.out.println("Test 4: " + findHash(param4)); // Expected: 2
+    }
+}
+
