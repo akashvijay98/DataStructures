@@ -1,4 +1,4 @@
-// get max frequency until index i 
+// 1. get max frequency until index i 
 public int getMaximumCategoryMaxCount(String s) {
     int[] freq = new int[26]; // frequency of each character
     int[] categoryMaxCount = new int[26]; // result per character
@@ -32,7 +32,7 @@ public int getMaximumCategoryMaxCount(String s) {
 
     return maxCount;
 }
-// get dna Sequence
+// 2. get dna Sequence
 
 /*
 We don’t care about exact frequencies, we just need to check:
@@ -96,7 +96,7 @@ public class Solution {
 
 
 
-// Pairs of Candidates / Get Number of Teams
+// 3. Pairs of Candidates / Get Number of Teams
 import java.util.*;
 
 public class Solution {
@@ -159,7 +159,7 @@ public class Solution {
     }
 }
 
-// Minimum Total Packaging Effort
+// 4. Minimum Total Packaging Effort
 
 import java.util.*;
 
@@ -208,3 +208,43 @@ public class Solution {
     }
 }
 
+// 5. get min subsegments 
+
+public class Segmentify {
+
+    public static int getminSubsegments(String frames) {
+        int n = frames.length();
+        StringBuilder normalized = new StringBuilder(); // stores each normalized segment after flip
+        int flips = 0;
+
+        for (int i = 0; i < n; i += 2) {
+            char a = frames.charAt(i);
+            char b = frames.charAt(i + 1);
+
+            if (a == b) {
+                // No flip needed, both characters are same
+                normalized.append(a);
+            } else {
+                // Flip one character to make them equal (choose '1' for consistency)
+                flips++;
+                normalized.append('1'); // or '0', doesn't matter as long as consistent
+            }
+        }
+
+        // Now merge consecutive same segments (i.e., same character in normalized string)
+        int segments = 1; // start with first segment
+        for (int i = 1; i < normalized.length(); i++) {
+            if (normalized.charAt(i) != normalized.charAt(i - 1)) {
+                segments++;
+            }
+        }
+
+        return segments;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(getminSubsegments("1110011000")); // Output: 2
+        System.out.println(getminSubsegments("110011"));      // Output: 3
+        System.out.println(getminSubsegments("100110"));      // Output: 1
+    }
+}
