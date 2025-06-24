@@ -210,6 +210,14 @@ public class Solution {
 
 // 5. get min subsegments 
 
+/*
+    "1110011000" → becomes: 11, 10, 01, 10, 00
+    
+    After flips: becomes 11, 11, 11, 11, 00
+    
+    So normalized = "11110" (1 char per pair)
+*/
+
 public class Segmentify {
 
     public static int getminSubsegments(String frames) {
