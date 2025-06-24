@@ -468,3 +468,121 @@ public class Solution {
         System.out.println("All same: " + minimizeVariation(test4)); // Expected: 0
     }
 }
+
+// 7. find Minimum Days - Binary Search
+// - similar to https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/submissions/1290585201/ 
+
+public class ChapterReadingExplanation {
+    
+    // Enhanced version with detailed comments and tracing
+    public static long findMinimumDays(int[] pages, int k, int p) {
+        int n = pages.length;
+        long low = 0, high = 0;
+        
+        // Calculate upper bound: worst case scenario
+        for (int pg : pages) {
+            high = Math.max(high, pg);
+        }
+        // Conservative upper bound: max_pages * n / k + 1
+        high = (long) high * n / k + 1;
+        
+        System.out.println("Binary search range: [" + low + ", " + high + "]");
+        
+        while (low < high) {
+            long mid = (low + high) / 2;
+            System.out.println("Trying " + mid + " days...");
+            
+            if (canFinish(pages, k, p, mid)) {
+                System.out.println("✓ Can finish in " + mid + " days");
+                high = mid;
+            } else {
+                System.out.println("✗ Cannot finish in " + mid + " days");
+                low = mid + 1;
+            }
+        }
+        
+        return low;
+    }
+    
+    private static boolean canFinish(int[] pages, int k, int p, long days) {
+        int n = pages.length;
+        
+        // Difference array: tracks the "effect" of reading sessions
+        long[] diff = new long[n + 1];
+        
+        // Current total reductions applied to each chapter
+        long[] cur = new long[n];
+        
+        long totalDays = days;
+        
+        System.out.println("  Simulating " + days + " days:");
+        
+        // Process each chapter from left to right
+        for (int i = 0; i < n; i++) {
+            // Apply accumulated effects from difference array
+            if (i > 0) diff[i] += diff[i - 1];
+            cur[i] += diff[i];
+            
+            // Calculate remaining pages for this chapter
+            long remaining = pages[i] - cur[i];
+            
+            System.out.printf("  Chapter %d: original=%d, reduced=%d, remaining=%d\n", 
+                            i, pages[i], cur[i], remaining);
+            
+            if (remaining > 0) {
+                // Calculate how many days needed to finish this chapter
+                long neededDays = (remaining + p - 1) / p;  // Ceiling division
+                
+                System.out.printf("    Need %d days to finish this chapter\n", neededDays);
+                
+                if (neededDays > totalDays) {
+                    System.out.println("    ✗ Not enough days left!");
+                    return false;
+                }
+                
+                // Use these days optimally
+                totalDays -= neededDays;
+                long reduceAmount = neededDays * p;
+                
+                System.out.printf("    Using %d days, reducing by %d pages\n", 
+                                neededDays, reduceAmount);
+                
+                // Apply reduction to current chapter
+                cur[i] += reduceAmount;
+                
+                // Use difference array to apply reduction to the sliding window
+                // Add effect starting from next chapter
+                if (i + 1 < n) {
+                    diff[i + 1] += reduceAmount;
+                }
+                
+                // Remove effect after the window of size k
+                if (i + k < n) {
+                    diff[i + k] -= reduceAmount;
+                }
+            }
+            
+            System.out.printf("    Days remaining: %d\n", totalDays);
+        }
+        
+        System.out.println("  ✓ All chapters can be finished!");
+        return true;
+    }
+
+    
+    public static void main(String[] args) {
+   
+     
+        System.out.println("\n=== EXAMPLE 1 ===");
+        int[] pages1 = {3, 1, 4};
+        int k1 = 2, p1 = 2;
+        long result1 = findMinimumDays(pages1, k1, p1);
+        System.out.println("Final result: " + result1);
+        
+        System.out.println("\n=== EXAMPLE 2 ===");
+        int[] pages2 = {3, 4};
+        int k2 = 1, p2 = 2;
+        long result2 = findMinimumDays(pages2, k2, p2);
+        System.out.println("Final result: " + result2);
+    }
+}
