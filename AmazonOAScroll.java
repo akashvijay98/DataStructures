@@ -256,3 +256,59 @@ public class Segmentify {
         System.out.println(getminSubsegments("100110"));      // Output: 1
     }
 }
+
+
+//4. find security level - Modular Hashing over Prefix Sums 
+// similar to https://leetcode.com/problems/continuous-subarray-sum/description/
+/*
+
+condition: sum(i, j) % k == (j - i + 1)
+(prefixSum[j+1] - (j + 1)) % k == (prefixSum[i] - i) % k
+
+pid = [1, 3, 2, 4], k = 4
+prefixSum: [0, 1, 4, 6, 10]
+
+i=0 → prefixSum[1] = 1 → (1 - 1) % 4 = 0  
+i=1 → prefixSum[2] = 4 → (4 - 2) % 4 = 2  
+i=2 → prefixSum[3] = 6 → (6 - 3) % 4 = 3  
+i=3 → prefixSum[4] = 10 → (10 - 4) % 4 = 2
+
+We saw `2` before → found malicious subarray `[2, 3]`.
+
+
+*/
+import java.util.*;
+
+public class AntivirusSecurity {
+
+    public static long findSecurityLevel(int[] pid, int k) {
+        Map<Integer, Integer> countMap = new HashMap<>();
+        countMap.put(0, 1); // Base case: empty prefix
+
+        long risk = 0;
+        long prefixSum = 0;
+
+        for (int i = 0; i < pid.length; i++) {
+            prefixSum += pid[i];
+
+            // Calculate (prefixSum - index) % k and handle negative mod
+            int modKey = (int) ((prefixSum - (i + 1)) % k);
+            if (modKey < 0) modKey += k;
+
+            // If this key has occurred before, we found that many malicious subarrays
+            risk += countMap.getOrDefault(modKey, 0);
+
+            // Update countMap with current modKey
+            countMap.put(modKey, countMap.getOrDefault(modKey, 0) + 1);
+        }
+
+        return risk;
+    }
+
+    public static void main(String[] args) {
+        int[] pid = {1, 3, 2, 4};
+        int k = 4;
+        System.out.println(findSecurityLevel(pid, k)); // Output: 2
+    }
+}
+
