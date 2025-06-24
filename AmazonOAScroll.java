@@ -315,10 +315,17 @@ public class AntivirusSecurity {
 
 // 5. find hash - greedy approach
 /*
-    Algorithm Logic:
-        1. Sort by Parameter Values: We process the parameters in ascending order of their values. This is because smaller param[i] values have fewer possible hash values (0 to param[i]-1), so they have more constraints.
-        2. Greedy Assignment: For each parameter (processed in sorted order), we assign the smallest possible hash value that hasn't been used yet.
-        3. Track Used Values: We maintain a set of already assigned hash values to avoid duplicates.
+
+param = [4, 4, 4, 4, 4]
+
+max distinct hash values = min(4, 5) = 4
+
+secretKey = [3, 4, 5, 6, 7]
+hash      = [3, 0, 1, 2, 3]
+✅ hash = [3, 0, 1, 2, 3] → distinct values = {0, 1, 2, 3}
+
+
+
 */
 
 import java.util.*;
