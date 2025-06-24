@@ -34,6 +34,12 @@ public int getMaximumCategoryMaxCount(String s) {
 }
 // get dna Sequence
 
+/*
+We don’t care about exact frequencies, we just need to check:
+
+“Do s1 and s2 share at least one common character?”
+*/
+
 import java.util.*;
 
 public class Solution {
