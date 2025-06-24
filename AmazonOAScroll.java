@@ -159,4 +159,52 @@ public class Solution {
     }
 }
 
+// Minimum Total Packaging Effort
+
+import java.util.*;
+
+public class Solution {
+    public int minimumPackagingEffort(int[] packEffort, int[] packageCount) {
+        Arrays.sort(packEffort);
+        Arrays.sort(packageCount);
+
+        int left = 0;                       // Pointer to smallest effort item (for free picks)
+        int right = packEffort.length - 1;  // Pointer to largest effort item
+
+        for (int i = 0; i < packageCount.length && right - left + 1 >= packageCount[i]; i++) {
+            int k = packageCount[i];  // number of paid items
+
+            // Get min among the k paid items
+            int minPaidEffort = packEffort[right - k + 1];
+
+            // Move 'right' pointer left by k items (those are paid)
+            right -= k;
+
+            // Try to take 2 free items (from the left) with effort <= minPaidEffort
+            for (int j = 0; j < 2 && left <= right; j++) {
+                if (packEffort[left] <= minPaidEffort) {
+                    left++;  // take it as free
+                } else {
+                    break;   // can't pick more free items
+                }
+            }
+        }
+
+        // All remaining items are paid for
+        int totalEffort = 0;
+        for (int i = left; i <= right; i++) {
+            totalEffort += packEffort[i];
+        }
+
+        return totalEffort;
+    }
+
+    // Sample usage
+    public static void main(String[] args) {
+        Solution sol = new Solution();
+        int[] packEffort = {50, 50, 30, 50, 20};
+        int[] packageCount = {2, 3};
+        System.out.println(sol.minimumPackagingEffort(packEffort, packageCount)); // Output: 120
+    }
+}
 
