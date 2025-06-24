@@ -325,52 +325,75 @@ import java.util.*;
 
 public class Solution {
     
-    public static int findHash(int[] param) {
-        int n = param.length;
-        
-        // Create pairs of (param[i], index) and sort by param value
-        Integer[] indices = new Integer[n];
-        for (int i = 0; i < n; i++) {
-            indices[i] = i;
+    // TRUE O(n) solution - No sorting needed!
+    public static int findHashOptimal(int[] param) {
+        // Count frequency of each parameter value
+        Map<Integer, Integer> freq = new HashMap<>();
+        for (int p : param) {
+            freq.put(p, freq.getOrDefault(p, 0) + 1);
         }
         
-        // Sort indices based on param values (ascending order)
-        Arrays.sort(indices, (a, b) -> Integer.compare(param[a], param[b]));
+        int distinctValues = 0;
         
-        Set<Integer> usedHashValues = new HashSet<>();
-        
-        // Process parameters in ascending order of their values
-        for (int idx : indices) {
-            int paramValue = param[idx];
+        // Process without sorting - order doesn't matter!
+        for (Map.Entry<Integer, Integer> entry : freq.entrySet()) {
+            int paramVal = entry.getKey();
+            int count = entry.getValue();
             
-            // Find the smallest hash value (0 to paramValue-1) that hasn't been used
-            for (int hashVal = 0; hashVal < paramValue; hashVal++) {
-                if (!usedHashValues.contains(hashVal)) {
-                    usedHashValues.add(hashVal);
-                    break;
-                }
+            // This parameter can contribute at most min(paramVal, count) distinct values
+            distinctValues += Math.min(paramVal, count);
+        }
+        
+        return distinctValues;
+    }
+    
+    // Alternative O(n) solution using counting sort when range is reasonable
+    public static int findHashCountingSort(int[] param) {
+        // Find max parameter value
+        int maxParam = 0;
+        for (int p : param) {
+            maxParam = Math.max(maxParam, p);
+        }
+        
+        // If range is too large, fall back to HashMap approach
+        if (maxParam > 2 * param.length) {
+            return findHashOptimal(param);
+        }
+        
+        // Count frequency using array
+        int[] freq = new int[maxParam + 1];
+        for (int p : param) {
+            freq[p]++;
+        }
+        
+        int distinctValues = 0;
+        for (int paramVal = 1; paramVal <= maxParam; paramVal++) {
+            if (freq[paramVal] > 0) {
+                distinctValues += Math.min(paramVal, freq[paramVal]);
             }
         }
         
-        return usedHashValues.size();
+        return distinctValues;
     }
     
     // Test method
     public static void main(String[] args) {
-        // Example 1
-        int[] param1 = {1, 2, 4};
-        System.out.println("Example 1: " + findHash(param1)); // Expected: 3
+        int[][] testCases = {
+            {1, 2, 4},      // Expected: 3
+            {1, 1, 1},      // Expected: 1  
+            {2, 2, 2, 2, 2}, // Expected: 2
+            {3, 3, 3, 3},   // Expected: 3
+            {1, 2, 3, 4, 5}, // Expected: 5
+            {5, 5, 5, 5, 5, 5} // Expected: 5
+        };
         
-        // Example 2
-        int[] param2 = {1, 1, 1};
-        System.out.println("Example 2: " + findHash(param2)); // Expected: 1
-        
-        // Additional test cases
-        int[] param3 = {2, 3, 5};
-        System.out.println("Test 3: " + findHash(param3)); // Expected: 3
-        
-        int[] param4 = {2, 2, 2};
-        System.out.println("Test 4: " + findHash(param4)); // Expected: 2
+        for (int i = 0; i < testCases.length; i++) {
+            int[] param = testCases[i];
+            int result1 = findHashOptimal(param);
+            int result2 = findHashCountingSort(param);
+            
+            System.out.printf("Test %d: HashMap=%d, CountingSort=%d, Input=%s%n", 
+                            i+1, result1, result2, Arrays.toString(param));
+        }
     }
 }
-
