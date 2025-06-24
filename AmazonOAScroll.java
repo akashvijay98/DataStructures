@@ -404,3 +404,67 @@ public class Solution {
         }
     }
 }
+// 6. Minimize variation
+/*
+    if we sort the array in ascending order, then left most element is always the minimum and right most will be max
+
+
+*/
+    
+import java.util.*;
+
+public class Solution {
+    public static long minimizeVariation(int[] productSize) {
+        int n = productSize.length;
+        
+        // Sort the array in ascending order
+        Arrays.sort(productSize);
+        
+        long totalVariation = 0;
+        
+        // Calculate variation for each prefix
+        for (int i = 0; i < n; i++) {
+            // For prefix [0...i], min is productSize[0], max is productSize[i]
+            long variation = (long)productSize[i] - (long)productSize[0];
+            totalVariation += variation;
+        }
+        
+        return totalVariation;
+    }
+    
+    // Alternative optimized approach using mathematical formula
+    public static long minimizeVariationOptimized(int[] productSize) {
+        int n = productSize.length;
+        Arrays.sort(productSize);
+        
+        long sum = 0;
+        
+        // Each element contributes to the sum based on its position
+        for (int i = 0; i < n; i++) {
+            // productSize[i] appears as max in (i+1) variations
+            // productSize[0] appears as min in (n) variations
+            sum += (long)(i + 1) * productSize[i] - (long)n * productSize[0];
+        }
+        
+        return sum;
+    }
+    
+    // Test method
+    public static void main(String[] args) {
+        // Test Example 1
+        int[] test1 = {3, 1, 2};
+        System.out.println("Example 1: " + minimizeVariation(test1)); // Expected: 3
+        
+        // Test Example 2  
+        int[] test2 = {6, 1, 4, 2};
+        System.out.println("Example 2: " + minimizeVariation(test2)); // Expected: 9
+        
+        // Test edge case
+        int[] test3 = {5};
+        System.out.println("Single element: " + minimizeVariation(test3)); // Expected: 0
+        
+        // Test with duplicates
+        int[] test4 = {2, 2, 2};
+        System.out.println("All same: " + minimizeVariation(test4)); // Expected: 0
+    }
+}
