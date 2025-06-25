@@ -642,3 +642,48 @@ public class CategorySplitter {
         System.out.println(splitPrefixSuffix(categories, k)); // Output: 2
     }
 }
+
+//9. Find Minimum Machine Sizes - Greedy
+// similar to buy/sell stocks problem
+public class MachineEfficiency {
+    public static int findMinimumMachinesSize(int[] machineCapacity) {
+        int n = machineCapacity.length;
+        if (n <= 2) return n;
+
+        int originalEfficiency = 0;
+        for (int i = 1; i < n; i++) {
+            originalEfficiency += Math.abs(machineCapacity[i] - machineCapacity[i - 1]);
+        }
+
+        // Try to minimize machine count
+        int count = 1; // First machine is always included
+        for (int i = 1; i < n - 1; i++) {
+            int prev = machineCapacity[i - 1];
+            int curr = machineCapacity[i];
+            int next = machineCapacity[i + 1];
+
+            // If this point is a turning point, include it
+            if ((curr - prev) * (next - curr) < 0) {
+                count++;
+            } else if ((curr - prev) * (next - curr) > 0) {
+                // Same direction (increasing or decreasing), we can skip this machine
+                continue;
+            } else {
+                // Flat section or non-strict change, count it
+                count++;
+            }
+        }
+        count++; // Include the last machine
+
+        return count;
+    }
+
+    public static void main(String[] args) {
+        int[] machineCapacity1 = {1, 3, 2, 5, 4};
+        System.out.println(findMinimumMachinesSize(machineCapacity1)); // Output: minimized number
+
+        int[] machineCapacity2 = {5, 4, 3, 2, 1};
+        System.out.println(findMinimumMachinesSize(machineCapacity2)); // Output: 2
+    }
+}
+
