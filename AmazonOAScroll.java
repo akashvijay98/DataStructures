@@ -586,3 +586,59 @@ public class ChapterReadingExplanation {
         System.out.println("Final result: " + result2);
     }
 }
+
+
+// 8. Split Prefix Suffix
+public class CategorySplitter {
+
+    public static int splitPrefixSuffix(String categories, int k) {
+        int n = categories.length();
+        int[] suffixFreq = new int[26];
+        boolean[] suffixPresent = new boolean[26];
+
+        // Step 1: count frequency in full string
+        for (char ch : categories.toCharArray()) {
+            suffixFreq[ch - 'a']++;
+            suffixPresent[ch - 'a'] = true;
+        }
+
+        int[] prefixFreq = new int[26];
+        boolean[] prefixPresent = new boolean[26];
+
+        int count = 0;
+
+        // Try all split points: from 1 to n - 1
+        for (int i = 0; i < n - 1; i++) {
+            char ch = categories.charAt(i);
+
+            // Move ch from suffix to prefix
+            prefixFreq[ch - 'a']++;
+            prefixPresent[ch - 'a'] = true;
+
+            suffixFreq[ch - 'a']--;
+            if (suffixFreq[ch - 'a'] == 0) {
+                suffixPresent[ch - 'a'] = false;
+            }
+
+            // Count how many characters are present in both prefix and suffix
+            int currentShared = 0;
+            for (int j = 0; j < 26; j++) {
+                if (prefixPresent[j] && suffixPresent[j]) {
+                    currentShared++;
+                }
+            }
+
+            if (currentShared > k) {
+                count++;
+            }
+        }
+
+        return count;
+    }
+
+    public static void main(String[] args) {
+        String categories = "abbcac";
+        int k = 1;
+        System.out.println(splitPrefixSuffix(categories, k)); // Output: 2
+    }
+}
