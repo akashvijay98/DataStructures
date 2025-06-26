@@ -764,4 +764,43 @@ public class MaxCircularSubsequence {
         return count;
     }
     
+// 12. get maximum count
+import java.util.*;
+
+public class MaxKAfterSingleAddition {
+
+    public static int maxFrequency(int[] arr, int k) {
+        int n = arr.length;
+        int countK = 0;
+
+        // Step 1: Count already existing elements equal to k
+        for (int num : arr) {
+            if (num == k) {
+                countK++;
+            }
+        }
+
+        // Step 2: Use a map to count how many non-k elements can be converted to k with same x
+        Map<Integer, Integer> deltaCount = new HashMap<>();
+        int maxConvertible = 0;
+
+        for (int num : arr) {
+            if (num != k) {
+                int x = k - num; // this is the delta we need to add to make it equal to k
+                deltaCount.put(x, deltaCount.getOrDefault(x, 0) + 1);
+                maxConvertible = Math.max(maxConvertible, deltaCount.get(x));
+            }
+        }
+
+        // Step 3: Maximum frequency = already present k + best possible conversion
+        return countK + maxConvertible;
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {1, 2, 3, 3};
+        int k = 3;
+        int result = maxFrequency(arr, k);
+        System.out.println("Max elements equal to " + k + " after operation: " + result);
+    }
+}
 
