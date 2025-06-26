@@ -730,4 +730,38 @@ public class MaxCircularSubsequence {
     }
 }
 
+// 11. Count Special Strings
+
+    // Optimized solution using mathematical approach
+    public static int countSpecialSubstringsOptimized(String s) {
+        int n = s.length();
+        int count = 0;
+        
+        // For each starting position
+        for (int i = 0; i < n; i++) {
+            int zeros = 0;
+            int ones = 0;
+            
+            // Extend substring from position i
+            for (int j = i; j < n; j++) {
+                if (s.charAt(j) == '0') {
+                    zeros++;
+                } else {
+                    ones++;
+                }
+                
+                // Check special condition: zeros = ones²
+                if (zeros == ones * ones) {
+                    count++;
+                }
+                
+                // Early termination: if zeros > ones², and we're adding more characters,
+                // we can't decrease zeros, so no point continuing for larger ones values
+                // But we might get ones to increase, so we continue
+            }
+        }
+        
+        return count;
+    }
+    
 
