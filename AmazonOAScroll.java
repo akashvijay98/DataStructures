@@ -687,3 +687,47 @@ public class MachineEfficiency {
     }
 }
 
+
+// 10. Server Selection
+import java.util.*;
+
+public class MaxCircularSubsequence {
+
+    public static int maxValidCircularSubsequence(int[] powers) {
+        Map<Integer, Integer> freq = new HashMap<>();
+
+        // Step 1: Count frequency of each number
+        for (int power : powers) {
+            freq.put(power, freq.getOrDefault(power, 0) + 1);
+        }
+
+        int maxLen = 0;
+
+        // Step 2: Single value groups (e.g., [1,1,1])
+        for (int count : freq.values()) {
+            if (count >= 3) {
+                maxLen = Math.max(maxLen, count);
+            }
+        }
+
+        // Step 3: Adjacent value pairs (e.g., [1,2,1])
+        for (int key : freq.keySet()) {
+            int curr = freq.get(key);
+            int next = freq.getOrDefault(key + 1, 0);
+            int total = curr + next;
+
+            if (total >= 3) {
+                maxLen = Math.max(maxLen, total);
+            }
+        }
+
+        return maxLen;
+    }
+
+    public static void main(String[] args) {
+        int[] powers = {4, 3, 5, 1, 2, 1};
+        System.out.println("Max Circular Subsequence Length: " + maxValidCircularSubsequence(powers));  // Output: 3
+    }
+}
+
+
