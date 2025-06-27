@@ -803,4 +803,41 @@ public class MaxKAfterSingleAddition {
         System.out.println("Max elements equal to " + k + " after operation: " + result);
     }
 }
+// 13.  Maximum Frequency After Subarray Operation
+// https://leetcode.com/problems/maximum-frequency-after-subarray-operation/description/
 
+class Solution{
+    public int maxFrequency(int[] nums, int k) {
+        int n = nums.length;
+        int maxFreq = 0;
+        
+        // For each possible value of x, find the maximum frequency we can achieve
+        // x can range from (k - 50) to (k - 1) based on constraints
+        for (int x = k - 50; x <= k + 50; x++) {
+            // For this x, find the best contiguous subarray to apply it to
+            int currentFreq = 0;
+            int bestSubarrayGain = 0;
+            int currentSubarrayGain = 0;
+            
+            for (int i = 0; i < n; i++) {
+                if (nums[i] == k) {
+                    currentFreq++;
+                    // If we include this in subarray, we lose this k but don't gain anything
+                    currentSubarrayGain = Math.max(0, currentSubarrayGain - 1);
+                } else if (nums[i] + x == k) {
+                    // If we include this in subarray, we gain a k
+                    currentSubarrayGain = Math.max(0, currentSubarrayGain + 1);
+                } else {
+                    // If we include this in subarray, we don't gain or lose anything
+                    currentSubarrayGain = Math.max(0, currentSubarrayGain);
+                }
+                
+                bestSubarrayGain = Math.max(bestSubarrayGain, currentSubarrayGain);
+            }
+            
+            maxFreq = Math.max(maxFreq, currentFreq + bestSubarrayGain);
+        }
+        
+        return maxFreq;
+    }
+}
