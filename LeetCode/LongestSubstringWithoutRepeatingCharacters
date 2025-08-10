@@ -15,15 +15,36 @@ class Solution {
             if(map.containsKey(rightChar)){
                
                // 1.suppose start is ahead of the last index of windowEnd, then max will be start 
-               //--------->(Example "dvjfdg"). here when start is at index 1 (v), and when d repeats, well take start instead of d's index'
+               /*--------->(Example "abba"). 
+                    here initially start is at index 0, and when right is at 2(b), b is already present in map, so we take max(0, map.get(b)=1+1)-> left = 2
+                    then, right= 3, a is also present in map, but since left is gone past map.get('a')-> max will be left which is already 2 instead of 0+1.
+                */
                // 2.else windowEnd will be ahead of start 
                start = Math.max(start, map.get(rightChar)+1);
 
             }
-
+            
             maxLength = Math.max(maxLength, windowEnd-start+1);
             map.put(rightChar, windowEnd);
         }
         return maxLength;
     }
 }
+
+
+/* 
+ follow ups : 
+    1. what if i want to return the first, or last match ?
+
+    for first match: 
+        if (windowLen > maxLen) {  // strictly greater
+        maxLen = windowLen;
+        startIndex = left;
+        }
+
+    for last match:
+        if (windowLen >= maxLen) {  // allow equal length
+        maxLen = windowLen;
+        startIndex = left;
+    }
+*/
