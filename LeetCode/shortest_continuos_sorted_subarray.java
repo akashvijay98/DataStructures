@@ -1,3 +1,9 @@
+/*
+    make a copy of nums array and sort it.
+    now compare each element of nums and snums, if they dont match it means the array nums is not in sorted order.
+    
+*/
+
 class Solution {
     public int findUnsortedSubarray(int[] nums) {
         int[] snums = nums.clone();
