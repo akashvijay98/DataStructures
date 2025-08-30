@@ -3,41 +3,44 @@ import java.util.*;
 public class Solution {
     public int getMaximumCount(int[] arr, int k) {
         int baseCount = 0;
-        Map<Integer, List<Integer>> map = new HashMap<>();
+        Set<Integer> diffs = new HashSet<>();
 
-        // Step 1 + 2: count base k's and group indices by diff
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] == k) {
+        for (int val : arr) {
+            if (val == k) {
                 baseCount++;
             } else {
-                int diff = k - arr[i];
-                map.computeIfAbsent(diff, d -> new ArrayList<>()).add(i);
+                diffs.add(k - val);
             }
         }
 
-        int bestGain = 0;
-
-        // Step 3: find max contiguous streak in each diff group
-        for (List<Integer> indices : map.values()) {
-            int current = 1, localBest = 1;
-            for (int i = 1; i < indices.size(); i++) {
-                if (indices.get(i) == indices.get(i - 1) + 1) {
-                    current++;
-                } else {
-                    current = 1;
+        int maxGain = 0;
+        for (int diff : diffs) {
+            int currentGain = 0;
+            for (int val : arr) {
+                int gain = 0;
+                if (val == k) {
+                    gain = -1;
+                } else if (k - val == diff) {
+                    gain = 1;
                 }
-                localBest = Math.max(localBest, current);
+                
+                currentGain += gain;
+                
+                if (currentGain > maxGain) {
+                    maxGain = currentGain;
+                }
+                if (currentGain < 0) {
+                    currentGain = 0;
+                }
             }
-            bestGain = Math.max(bestGain, localBest);
         }
-
-        return baseCount + bestGain;
+        
+        return baseCount + maxGain;
     }
 
-    // test
     public static void main(String[] args) {
         Solution s = new Solution();
-        System.out.println(s.getMaximumCount(new int[]{2,3,2,4,3,2}, 2)); // 4
-        System.out.println(s.getMaximumCount(new int[]{6,4,4,6,4,4}, 6)); // 5
+        System.out.println(s.getMaximumCount(new int[]{2,3,2,4,3,2}, 2));
+        System.out.println(s.getMaximumCount(new int[]{6,4,4,6,4,4}, 6));
     }
 }
