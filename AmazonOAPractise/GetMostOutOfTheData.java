@@ -1,3 +1,5 @@
+//https://www.fastprep.io/problems/amazon-get-most-out-of-the-data
+
 public int[] getMostOutOfData(int[] data) {
     int n = data.length;
     int[] res = new int[n];
