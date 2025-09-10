@@ -136,6 +136,8 @@ class Solution {
         }
 
         // A valid placement exists if the intersection region is not empty.
+
+        // any position between this range will be an overlapping interval.
         return minRowReq <= maxRowReq && minColReq <= maxColReq;
     }
 
