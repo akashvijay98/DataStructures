@@ -2,11 +2,8 @@
 
 
 1423. Maximum Points You Can Obtain from Cards
-// first calculate the sum of last k cards from n-k to n
-// keep a pointer from the beggining of the array(start)
-// move the window to the right by removing element at n-k and add element at start
-
-
+// Use a fixed-length sliding window of size n - k to find the minimum sum of any consecutive n - k cards. 
+// For each window position, calculate total - window_sum to get the corresponding score, and track the maximum.
 class Solution {
     public int maxScore(int[] cardPoints, int k) {
         int windowSum =0;
