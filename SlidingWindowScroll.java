@@ -2,6 +2,9 @@
 
 
 1423. Maximum Points You Can Obtain from Cards
+// first calculate the sum of last k cards from n-k to n
+// keep a pointer from the beggining of the array(start)
+// move the window to the right by removing element at n-k and add element at start
 
 
 class Solution {
