@@ -103,3 +103,74 @@ class Solution {
 
    
 }
+
+
+//PathSum
+
+class Solution {
+    public boolean hasPathSum(TreeNode root, int targetSum) {
+        if(root==null){
+            return false;
+        }
+        return dfs(root, 0, targetSum);
+    }
+
+    private boolean dfs(TreeNode root, int sum, int target){
+
+        if(root==null){
+            return false;
+        }
+         sum+=root.val;
+        if(root.left==null && root.right==null){
+            if(sum==target){
+
+                return true;
+            }
+            else{
+                return false;
+            }   
+        }
+        
+       
+        return dfs(root.left,sum,target) || dfs(root.right,sum,target);
+
+    }
+}
+
+
+// path Sum 2
+
+class Solution {
+     List<List<Integer>> result = new ArrayList<>();
+    public List<List<Integer>> pathSum(TreeNode root, int targetSum) {
+       
+          ArrayList<Integer> list = new ArrayList<>();
+        backtrack(root, targetSum, 0, list);
+
+        return result;
+
+    }
+
+    private void backtrack(TreeNode root, int target, int sum, List<Integer> list){
+       
+        if(root==null){
+            return;
+        }
+
+        
+
+        sum+=root.val;
+        list.add(root.val);
+
+        if(sum==target && root.left== null && root.right==null){
+            result.add(new ArrayList<>(list));
+        }
+
+        backtrack(root.left, target, sum, list);
+        backtrack(root.right, target, sum, list);
+
+        sum-=root.val;
+        list.remove(list.size()-1);
+
+    }
+}
