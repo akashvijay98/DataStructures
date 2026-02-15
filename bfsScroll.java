@@ -47,3 +47,46 @@ class Solution {
         return freshCount==0? time:-1;
     }
 }
+
+// level order
+
+class Solution {
+    public List<List<Integer>> levelOrder(TreeNode root) {
+       
+        Deque<TreeNode> q = new ArrayDeque<>();
+        List<List<Integer>> result = new ArrayList<>();
+
+         if(root ==null){
+            return result;
+        }
+        
+        q.add(root);
+
+        while(!q.isEmpty()){
+            List<Integer> tempResult = new ArrayList<>();  
+            int levels = q.size();
+
+            for(int i =0;i<levels;i++){
+                TreeNode x = q.remove();
+            
+                if(x.left!=null){
+                    q.add(x.left);
+                }
+                if(x.right != null){
+                    q.add(x.right);
+                
+                }
+                tempResult.add(x.val);
+
+            }
+
+           result.add(tempResult);
+            
+
+        }
+
+        return result;
+
+    }
+}
+
