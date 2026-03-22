@@ -71,3 +71,49 @@ class Solution {
         return maxRobots;
     }
 }
+
+// 1438. Longest Continuous Subarray With Absolute Diff Less Than or Equal to Limit
+
+class Solution {
+    public int longestSubarray(int[] nums, int limit) {
+        Deque<Integer> maxDq= new ArrayDeque<>();
+        Deque<Integer> minDq= new ArrayDeque<>();
+
+        int n= nums.length;
+
+        int left =0;
+
+        int maxLen=0;
+
+        for(int right = 0; right<n;right++){
+            while(!maxDq.isEmpty() && nums[maxDq.peekLast()]<=nums[right]){
+                maxDq.pollLast();
+            }
+            maxDq.addLast(right);
+
+
+            while(!minDq.isEmpty() && nums[minDq.peekLast()]>=nums[right]){
+                minDq.pollLast();
+            }
+            minDq.addLast(right);
+
+            while(nums[maxDq.peekFirst()]- nums[minDq.peekFirst()]>limit){
+
+                if(!maxDq.isEmpty() && left == maxDq.peekFirst()){
+                    maxDq.pollFirst();
+                }
+
+                if(!minDq.isEmpty() && minDq.peekFirst()==left){
+                    minDq.pollFirst();
+                }
+
+                left++;
+            }
+
+            maxLen = Math.max(maxLen, right-left+1);
+
+        }
+
+        return maxLen;
+    }
+}
