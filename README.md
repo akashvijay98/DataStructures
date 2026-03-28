@@ -241,6 +241,7 @@ A collection of Java solutions categorized by data structures and algorithmic pa
 - `ExpressionAddOperators(Hard).java`
 - `letterCasePermutation.java`
 - `Combinations.java`
+- `WordSearch.java'
 
 ---
 
