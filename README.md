@@ -1,121 +1,155 @@
-## LeetCode Problems
+# 📚 LeetCode Problems — Grouped by Pattern & Data Structure
 
-### Array / String
-| Problem | Difficulty |
-|---------|------------|
-| [Merge Strings Alternately](https://leetcode.com/problems/merge-strings-alternately/) | Easy |
-| [Greatest Common Divisor of Strings](https://leetcode.com/problems/greatest-common-divisor-of-strings/) | Easy |
-| [Kids With the Greatest Number of Candies](https://leetcode.com/problems/kids-with-the-greatest-number-of-candies/) | Easy |
-| [Can Place Flowers](https://leetcode.com/problems/can-place-flowers/) | Easy |
-| [Reverse Vowels of a String](https://leetcode.com/problems/reverse-vowels-of-a-string/) | Easy |
-| [Reverse Words in a String](https://leetcode.com/problems/reverse-words-in-a-string/) | Medium |
-| [Product of Array Except Self](https://leetcode.com/problems/product-of-array-except-self/) | Medium |
-| [Increasing Triplet Subsequence](https://leetcode.com/problems/increasing-triplet-subsequence/) | Medium |
-| [String Compression](https://leetcode.com/problems/string-compression/) | Medium |
+A curated reference of LeetCode problems organized by algorithmic pattern and primary data structure. Use this as a study guide to recognize problem types and apply the right technique.
 
-### Two Pointers
-| Problem | Difficulty |
-|---------|------------|
-| [Move Zeroes](https://leetcode.com/problems/move-zeroes/) | Easy |
-| [Is Subsequence](https://leetcode.com/problems/is-subsequence/) | Easy |
-| [Container With Most Water](https://leetcode.com/problems/container-with-most-water/) | Medium |
-| [Max Number of K-Sum Pairs](https://leetcode.com/problems/max-number-of-k-sum-pairs/) | Medium |
-
-### Sliding Window
-| Problem | Difficulty |
-|---------|------------|
-| [Maximum Average Subarray I](https://leetcode.com/problems/maximum-average-subarray-i/) | Easy |
-| [Maximum Number of Vowels in a Substring of Given Length](https://leetcode.com/problems/maximum-number-of-vowels-in-a-substring-of-given-length/) | Medium |
-| [Max Consecutive Ones III](https://leetcode.com/problems/max-consecutive-ones-iii/) | Medium |
-| [Longest Subarray of 1's After Deleting One Element](https://leetcode.com/problems/longest-subarray-of-1s-after-deleting-one-element/) | Medium |
-
-### Prefix Sum
-| Problem | Difficulty |
-|---------|------------|
-| [Find the Highest Altitude](https://leetcode.com/problems/find-the-highest-altitude/) | Easy |
-| [Find Pivot Index](https://leetcode.com/problems/find-pivot-index/) | Easy |
-
-### Hash Map / Set
-| Problem | Difficulty |
-|---------|------------|
-| [Find the Difference of Two Arrays](https://leetcode.com/problems/find-the-difference-of-two-arrays/) | Easy |
-| [Unique Number of Occurrences](https://leetcode.com/problems/unique-number-of-occurrences/) | Easy |
-| [Determine if Two Strings Are Close](https://leetcode.com/problems/determine-if-two-strings-are-close/) | Medium |
-| [Equal Row and Column Pairs](https://leetcode.com/problems/equal-row-and-column-pairs/) | Medium |
-| [Custom String Sorting](https://leetcode.com/problems/custom-sort-string/description/) |Medium|
-
-### Stack
-| Problem | Difficulty |
-|---------|------------|
-| [Removing Stars From a String](https://leetcode.com/problems/removing-stars-from-a-string/) | Medium |
-| [Asteroid Collision](https://leetcode.com/problems/asteroid-collision/) | Medium |
-| [Decode String](https://leetcode.com/problems/decode-string/) | Medium |
-
-### Queue
-| Problem | Difficulty |
-|---------|------------|
-| [Number of Recent Calls](https://leetcode.com/problems/number-of-recent-calls/) | Easy |
-| [Dota2 Senate](https://leetcode.com/problems/dota2-senate/) | Medium |
-
-### Linked List
-| Problem | Difficulty |
-|---------|------------|
-| [Delete the Middle Node of a Linked List](https://leetcode.com/problems/delete-the-middle-node-of-a-linked-list/) | Medium |
-| [Odd Even Linked List](https://leetcode.com/problems/odd-even-linked-list/) | Medium |
-| [Reverse Linked List](https://leetcode.com/problems/reverse-linked-list/) | Easy |
-| [Maximum Twin Sum of a Linked List](https://leetcode.com/problems/maximum-twin-sum-of-a-linked-list/) | Medium |
-
-### Binary Tree - DFS
-| Problem | Difficulty |
-|---------|------------|
-| [Maximum Depth of Binary Tree](https://leetcode.com/problems/maximum-depth-of-binary-tree/) | Easy |
-| [Leaf-Similar Trees](https://leetcode.com/problems/leaf-similar-trees/) | Easy |
-| [Count Good Nodes in Binary Tree](https://leetcode.com/problems/count-good-nodes-in-binary-tree/) | Medium |
-| [Path Sum III](https://leetcode.com/problems/path-sum-iii/) | Medium |
-| [Longest ZigZag Path in a Binary Tree](https://leetcode.com/problems/longest-zigzag-path-in-a-binary-tree/) | Medium |
-| [Lowest Common Ancestor of a Binary Tree](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/) | Medium |
-
-### Binary Tree - BFS
-| Problem | Difficulty |
-|---------|------------|
-| [Binary Tree Right Side View](https://leetcode.com/problems/binary-tree-right-side-view/) | Medium |
-| [Maximum Level Sum of a Binary Tree](https://leetcode.com/problems/maximum-level-sum-of-a-binary-tree/) | Medium |
-
-### Binary Search Tree
-| Problem | Difficulty |
-|---------|------------|
-| [Search in a Binary Search Tree](https://leetcode.com/problems/search-in-a-binary-search-tree/) | Easy |
-| [Delete Node in a BST](https://leetcode.com/problems/delete-node-in-a-bst/) | Medium |
-
-### Graphs - DFS
-| Problem | Difficulty |
-|---------|------------|
-| [Keys and Rooms](https://leetcode.com/problems/keys-and-rooms/) | Medium |
-| [Number of Provinces](https://leetcode.com/problems/number-of-provinces/) | Medium |
-| [Reorder Routes to Make All Paths Lead to the City Zero](https://leetcode.com/problems/reorder-routes-to-make-all-paths-lead-to-the-city-zero/) | Medium |
-| [Evaluate Division](https://leetcode.com/problems/evaluate-division/) | Medium |
-
-### Graphs - BFS
-| Problem | Difficulty |
-|---------|------------|
-| [Nearest Exit from Entrance in Maze](https://leetcode.com/problems/nearest-exit-from-entrance-in-maze/) | Medium |
-| [Rotting Oranges](https://leetcode.com/problems/rotting-oranges/) | Medium |
-
-### Heap / Priority Queue
-| Problem | Difficulty |
-|---------|------------|
-| [Kth Largest Element in an Array](https://leetcode.com/problems/kth-largest-element-in-an-array/) | Medium |
-| [Smallest Number in Infinite Set](https://leetcode.com/problems/smallest-number-in-infinite-set/) | Medium |
-| [Maximum Subsequence Score](https://leetcode.com/problems/maximum-subsequence-score/) | Medium |
-| [Total Cost to Hire K Workers](https://leetcode.com/problems/total-cost-to-hire-k-workers/) | Medium |
-
-### Binary Search
-| Problem | Difficulty |
-|---------|------------|
-| [Guess Number Higher or Lower](https://leetcode.com/problems/guess-number-higher-or-lower/) | Easy |
-| [Successful Pairs of Spells and Potions](https://leetcode.com/problems/successful-pairs-of-spells-and-potions/) | Medium |
-| [Find Peak Element](https://leetcode.com/problems/find-peak-element/) | Medium |
-| [Koko Eating Bananas](https://leetcode.com/problems/koko-eating-bananas/) | Medium |
-| [Count the Number of Fair Pairs](https://leetcode.com/problems/count-the-number-of-fair-pairs/) | Medium |
- 
 ---
+
+## 🗂️ Table of Contents
+
+- [Sliding Window](#-sliding-window)
+- [Two Pointers / Binary Search](#-two-pointers--binary-search)
+- [Backtracking](#-backtracking)
+- [Graphs (BFS / DFS)](#-graphs-bfs--dfs)
+- [Greedy / Intervals](#-greedy--intervals)
+- [Heaps / Top-K](#-heaps--top-k)
+- [Dynamic Programming](#-dynamic-programming)
+- [Hashing / Prefix Sum](#-hashing--prefix-sum)
+- [Problems with Multiple Patterns](#-problems-with-multiple-patterns)
+
+---
+
+## 🪟 Sliding Window
+
+| Problem | Primary Data Structure(s) | Key Logic / Technique |
+|---|---|---|
+| Sliding Window Maximum | Deque (`ArrayDeque`) | Monotonic queue to maintain maximums in O(n) |
+| Sliding Window Median | PriorityQueue (Two Heaps) | Maintaining balanced max-heap and min-heap |
+| Longest Repeating Character Replacement | HashMap | Tracking character frequency within a dynamic window |
+| Longest Substring With At Most 2 Distinct Characters | HashMap | Using a map to track the rightmost index of characters |
+
+**When to use:** The problem involves a contiguous subarray or substring, and you're asked to find the max/min/count meeting some condition.
+
+---
+
+## 🔢 Two Pointers / Binary Search
+
+| Problem | Primary Data Structure(s) | Key Logic / Technique |
+|---|---|---|
+| Three Sum | Array | Sorting followed by a `left` and `right` pointer search |
+| Koko Eating Bananas | Array | Binary search on the "answer space" (speed k) |
+| Search in Rotated Sorted Array | Array | Modified binary search with range checks |
+
+**When to use:** The input is sorted (or can be), and you're searching for pairs/triplets, or binary searching on an answer value rather than an index.
+
+---
+
+## 🔙 Backtracking
+
+| Problem | Primary Data Structure(s) | Key Logic / Technique |
+|---|---|---|
+| Combination Sum | LinkedList, List | Recursive exploration of all combinations |
+| Permutations | List | Recursive swap or "used" set approach for ordering |
+| Subsets | List | Generating all power set combinations |
+
+**When to use:** You need to enumerate all possible configurations (combinations, permutations, subsets), and invalid paths should be pruned early.
+
+---
+
+## 🌐 Graphs (BFS / DFS)
+
+| Problem | Primary Data Structure(s) | Key Logic / Technique |
+|---|---|---|
+| Number of Islands | Queue, 2D Array | BFS to visit all connected `'1'`s |
+| Max Area of Island | 2D Array | DFS to calculate the size of connected components |
+| Course Schedule | Queue, List (Adj. List) | Topological Sort (Kahn's Algorithm) |
+| Binary Tree Level Order Traversal | Deque (Queue) | Level-by-level processing using a queue |
+
+**When to use:** The problem involves traversing a graph, grid, or tree — either to find connectivity, shortest paths, or ordering dependencies.
+
+---
+
+## 📅 Greedy / Intervals
+
+| Problem | Primary Data Structure(s) | Key Logic / Technique |
+|---|---|---|
+| Merge Intervals | List, Array | Sorting by start time and merging overlapping ends |
+| Insert Interval | List, Array | Handling non-overlapping, overlapping, and remaining intervals |
+| Meeting Rooms II | PriorityQueue | Min-heap to track the earliest ending meeting |
+| Meeting Rooms III | PriorityQueue | Two heaps for unused and used rooms |
+
+**When to use:** The problem involves scheduling, interval overlap detection, or making locally optimal choices that lead to a globally optimal solution.
+
+---
+
+## 🏔️ Heaps / Top-K
+
+| Problem | Primary Data Structure(s) | Key Logic / Technique |
+|---|---|---|
+| K Closest Points to Origin | PriorityQueue (Max-Heap) | Maintaining the K smallest distances in a heap |
+| Top K Frequent Elements | PriorityQueue, HashMap | Frequency map combined with a min-heap |
+| Find Median from Data Stream | PriorityQueue (Two Heaps) | Balancing two heaps to find the middle element(s) |
+
+**When to use:** You need to efficiently track the K largest/smallest elements, or find order statistics (like the median) in a dynamic dataset.
+
+---
+
+## 🧮 Dynamic Programming
+
+| Problem | Primary Data Structure(s) | Key Logic / Technique |
+|---|---|---|
+| Word Break | Boolean Array (DP table) | Building up feasibility for substring prefixes |
+
+**When to use:** The problem has overlapping subproblems and optimal substructure — i.e., larger solutions can be built from smaller, cached results.
+
+---
+
+## #️⃣ Hashing / Prefix Sum
+
+| Problem | Primary Data Structure(s) | Key Logic / Technique |
+|---|---|---|
+| Two Sum | HashMap | Complement tracking for O(n) lookup |
+| Count the Number of Nice Subarrays | HashMap | Prefix sum approach to count odd number counts |
+
+**When to use:** You need O(1) lookups for complements or counts, or you want to reduce a subarray problem to a prefix difference check.
+
+---
+
+## 🔀 Problems with Multiple Patterns
+
+Several problems can be solved using more than one valid approach. Understanding the alternatives deepens pattern recognition.
+
+### 1. Sliding Window Median
+- **Current:** Two Heaps (PriorityQueues) — O(log k) per operation.
+- **Alternative:** Sliding Window + Balanced BST (`TreeMap` in Java) — similar complexity, handles removals more naturally.
+
+### 2. Number of Islands
+- **Current:** BFS using a Queue.
+- **Alternative:** DFS (as seen in *Max Area of Island*). BFS and DFS are interchangeable for connected-component problems in a grid.
+
+### 3. Capacity to Ship Packages Within D Days
+- **Current:** Binary Search on Answer + Greedy feasibility check — optimal approach.
+- **Alternative:** A DP-based partition approach is theoretically possible but far less efficient for the given constraints.
+
+### 4. Meeting Rooms II
+- **Current:** Min-Heap tracking the earliest ending room.
+- **Alternative:** Two Pointers / Chronological Ordering — sort start and end times separately, then iterate to find the maximum number of concurrent meetings.
+
+---
+
+## 💡 Pattern Recognition Cheat Sheet
+
+| If the problem asks for... | Consider... |
+|---|---|
+| Max/min in a contiguous window | Sliding Window |
+| Pairs/triplets summing to a target | Two Pointers |
+| All possible combinations/subsets | Backtracking |
+| Connected components / shortest path | BFS / DFS |
+| Scheduling or overlap detection | Greedy / Intervals |
+| The K largest or smallest elements | Heap |
+| Overlapping subproblems | Dynamic Programming |
+| O(1) lookups by value | HashMap / Hashing |
+| Counting subarrays with a property | Prefix Sum |
+
+---
+
+*Happy coding! ⚡ Focus on recognizing the pattern first — the implementation follows naturally.*
