@@ -2,7 +2,10 @@
 Approach:
   we know in bst, the left node is the smallest, then comes the root which is greater than left, then comes right which is greater than root.
     left < root < right
-
+    
+    // we check if count>=k and if so, then stop all the subsequent recursive calls. 
+    // this is called as short cicruiting the dfs.
+    
     1. so we first recusrively call left. 
     2. for the root we increase the count by 1.
     3. then we recursevely call the right.
@@ -28,7 +31,7 @@ class Solution {
         return node;
     }
     public void dfs(TreeNode root, int k){
-        if(root == null){
+        if(root == null || count>=k){
             return ;
         }
        
