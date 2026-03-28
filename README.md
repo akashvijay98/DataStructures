@@ -1,155 +1,234 @@
-# 📚 LeetCode Problems — Grouped by Pattern & Data Structure
+# LeetCode Solutions Index
 
-A curated reference of LeetCode problems organized by algorithmic pattern and primary data structure. Use this as a study guide to recognize problem types and apply the right technique.
+A collection of Java solutions categorized by data structures and algorithmic patterns.
 
----
+## 🌳 Tree & Binary Search Tree (BST)
 
-## 🗂️ Table of Contents
+### Structure & Traversal
+- `binaryTreeLevelOrderTraversal.java`
+- `binaryTreeZigZag.java`
+- `maximumWidthOfBinaryTree.java`
+- `Binary_Tree_Vertical_Order_Sort.java`
+- `LevelOrderTraversalBST.java`
+- `evenOddTree.java`
+- `checkCompletenessofBinaryTree.java`
 
-- [Sliding Window](#-sliding-window)
-- [Two Pointers / Binary Search](#-two-pointers--binary-search)
-- [Backtracking](#-backtracking)
-- [Graphs (BFS / DFS)](#-graphs-bfs--dfs)
-- [Greedy / Intervals](#-greedy--intervals)
-- [Heaps / Top-K](#-heaps--top-k)
-- [Dynamic Programming](#-dynamic-programming)
-- [Hashing / Prefix Sum](#-hashing--prefix-sum)
-- [Problems with Multiple Patterns](#-problems-with-multiple-patterns)
+### Path & Sum Problems
+- `sumRootToLeafNumbers.java`
+- `binaryTreeMaximumPathSum.java`
+- `pathSum.java`
+- `pathSum2.java`
+- `pathSum3.java`
+- `maxLevelSumOfBinaryTree.java`
+- `RangeSumofBST.java`
 
----
+### Construction & Modification
+- `InverBinaryTree.java`
+- `FlattenBSTtoLinkedList.java`
+- `BinaryTreeFlatteningToLinkedList.java`
+- `createBinaryTreeFromInorderAndPostOrderTraversal.java`
+- `ConstructBinarySearchTreeFromPreorderTraversal.java`
+- `Balance_A_BST.java`
+- `trimABinarySearchTree.java`
+- `deleteNodeinBST.java`
+- `removeLeafNodes.java`
 
-## 🪟 Sliding Window
+### LCA & Properties
+- `lowestCommonAncestorofaBinarySearchTree.java`
+- `lowestCommonAncestorInBinaryTree.java`
+- `lca2.java`
+- `diameterOfBinaryTree.java`
+- `BalancedBinaryTree.java`
+- `validateBinarySearchTree.java`
+- `flipEquivalentBinaryTrees.java`
+- `countGoodNodesInBinaryTree.java`
+- `longestUnivaluePath.java`
+- `longestZigZagPathInABinaryTree.java`
+- `smallestStringStartingFromLeaf.java`
+- `findBottomTreeValue.java`
 
-| Problem | Primary Data Structure(s) | Key Logic / Technique |
-|---|---|---|
-| Sliding Window Maximum | Deque (`ArrayDeque`) | Monotonic queue to maintain maximums in O(n) |
-| Sliding Window Median | PriorityQueue (Two Heaps) | Maintaining balanced max-heap and min-heap |
-| Longest Repeating Character Replacement | HashMap | Tracking character frequency within a dynamic window |
-| Longest Substring With At Most 2 Distinct Characters | HashMap | Using a map to track the rightmost index of characters |
+## ⚡ Dynamic Programming (DP) & Recursion
 
-**When to use:** The problem involves a contiguous subarray or substring, and you're asked to find the max/min/count meeting some condition.
+### Classical DP
+- `CoinChange_DP_TopDown.java`
+- `Coin_Change_Bottom-Up(Tabulation).java`
+- `Coin_Change2.java`
+- `LongestIncreasingSubsequence.java`
+- `LongestIncreasingSubsequence_DP.java`
+- `LongestCommonSubsequence.java`
+- `fibonacci_tabulation.java`
 
----
+### Grid & Paths
+- `uniquePaths_tabularDP.java`
+- `uniquePath2.java`
 
-## 🔢 Two Pointers / Binary Search
+### Strings & Partitioning
+- `wordBreak_DP.java`
+- `wordBreak2_memoization.java`
+- `palindromePartitioning.java`
 
-| Problem | Primary Data Structure(s) | Key Logic / Technique |
-|---|---|---|
-| Three Sum | Array | Sorting followed by a `left` and `right` pointer search |
-| Koko Eating Bananas | Array | Binary search on the "answer space" (speed k) |
-| Search in Rotated Sorted Array | Array | Modified binary search with range checks |
+### Game Theory & Others
+- `jumpGame.java`
+- `houseRobber3.java`
+- `HouseRobber.java`
+- `MinMostClimbingStairs.java`
+- `champagneTower.java`
 
-**When to use:** The input is sorted (or can be), and you're searching for pairs/triplets, or binary searching on an answer value rather than an index.
+## 🧵 Strings
 
----
+### Manipulation & Parsing
+- `StringtoInteger(atoi).java`
+- `StringCompression.java`
+- `compressString.java`
+- `AddStrings.java`
+- `TextJustification.java`
+- `simplifyPath.java`
+- `findAndReplaceInString.java`
 
-## 🔙 Backtracking
+### Anagrams & Patterns
+- `WordPattern.java`
+- `groupAnagrams.java`
+- `FindAllAnagrams.java`
+- `ValidAnagram.java`
+- `valid_anagram.java`
 
-| Problem | Primary Data Structure(s) | Key Logic / Technique |
-|---|---|---|
-| Combination Sum | LinkedList, List | Recursive exploration of all combinations |
-| Permutations | List | Recursive swap or "used" set approach for ordering |
-| Subsets | List | Generating all power set combinations |
+### Palindromes
+- `longestPalindromeSubstring.java`
+- `longestPalindromicSubstring_DP.java`
+- `PalindromicSubstrings.java`
+- `uniqueLength-3Palindrome.java`
+- `isValidPalindrome2.java`
+- `LongestPalindromeByConcatenatingTwoLetterWords.java`
 
-**When to use:** You need to enumerate all possible configurations (combinations, permutations, subsets), and invalid paths should be pruned early.
+### Subsequences
+- `numberOfMatchingSubsequences.java`
+- `isSubsequence`
+- `numberOfMatchingSubsequences_BruteForce.java`
 
----
+## 🔢 Arrays, Two Pointers & Sliding Window
 
-## 🌐 Graphs (BFS / DFS)
+### Sliding Window
+- `slidingWindowMaximum.java`
+- `SlidingWIndowMedian.java`
+- `LongestSubstringWithoutRepeatingCharacters`
+- `LongestRepeatingCharacterReplacement.java`
+- `MaxVowelsInASubstring`
+- `CountTheNumberOfNiceSubarrays`
+- `subarray_sum_equals_K`
 
-| Problem | Primary Data Structure(s) | Key Logic / Technique |
-|---|---|---|
-| Number of Islands | Queue, 2D Array | BFS to visit all connected `'1'`s |
-| Max Area of Island | 2D Array | DFS to calculate the size of connected components |
-| Course Schedule | Queue, List (Adj. List) | Topological Sort (Kahn's Algorithm) |
-| Binary Tree Level Order Traversal | Deque (Queue) | Level-by-level processing using a queue |
+### Two Pointers
+- `MoveZeroes.java`
+- `TwoSum.java`
+- `ThreeSum.java`
+- `boatsToSavePeople.java`
+- `ContainerWithMaximumWater`
+- `trappingRainWater.java`
+- `shortest_continuos_sorted_subarray.java`
 
-**When to use:** The problem involves traversing a graph, grid, or tree — either to find connectivity, shortest paths, or ordering dependencies.
+### Sorting & Selection
+- `topKFrequentElements.java`
+- `topKFrequentWords.java`
+- `kClosestPointsToOrigin.java`
+- `largestNumber.java`
+- `rearrangeArrayElementsBySign.java`
 
----
+## 🕸️ Graphs & Matrix
 
-## 📅 Greedy / Intervals
+### Search (BFS/DFS)
+- `rottingOranges.java`
+- `numberOfIslands.java`
+- `maxAreaOfIsland.java`
+- `countSubIslands.java`
+- `pacificAtlanticWaterFlow.java`
+- `surroundedRegions.java`
+- `nearestExitFromEntranceInMaze.java`
+- `allPathsFromSourceToTarget.java`
+- `wordLadder_BFS_solution.java`
+- `cloneGraph.java`
 
-| Problem | Primary Data Structure(s) | Key Logic / Technique |
-|---|---|---|
-| Merge Intervals | List, Array | Sorting by start time and merging overlapping ends |
-| Insert Interval | List, Array | Handling non-overlapping, overlapping, and remaining intervals |
-| Meeting Rooms II | PriorityQueue | Min-heap to track the earliest ending meeting |
-| Meeting Rooms III | PriorityQueue | Two heaps for unused and used rooms |
+### Connectivity & Trees
+- `numberOfProvinces.java`
+- `NumberofConnectedComponentsinanUndirectedGraph.java`
+- `accountsMerge.java`
+- `minimumHeightTrees.java`
+- `timeNeededToInformAllEmployees.java`
+- `PossibleBipartition.java`
+- `keysAndRooms.java`
 
-**When to use:** The problem involves scheduling, interval overlap detection, or making locally optimal choices that lead to a globally optimal solution.
+## 🔍 Binary Search
 
----
+### Search in Sorted
+- `searchInRotatedSortedArray.java`
+- `searchInRotatedSortedArray2.java`
+- `find_minimum_in_rotated_sorted_array.java`
+- `findPeakElement.java`
+- `searchInsertPosition.java`
+- `searchA2DMatrix.java`
+- `singleElementInASortedArray.java`
 
-## 🏔️ Heaps / Top-K
+### Optimization
+- `KokoEatingBananas.java`
+- `capacityToShipPackageWithinDDays.java`
+- `split_array_largest_sum.java`
+- `minimumNumberofDaystoMakemBouquets.java`
+- `CuttingRibbons.java`
 
-| Problem | Primary Data Structure(s) | Key Logic / Technique |
-|---|---|---|
-| K Closest Points to Origin | PriorityQueue (Max-Heap) | Maintaining the K smallest distances in a heap |
-| Top K Frequent Elements | PriorityQueue, HashMap | Frequency map combined with a min-heap |
-| Find Median from Data Stream | PriorityQueue (Two Heaps) | Balancing two heaps to find the middle element(s) |
+## 🔗 Linked List
+- `addTwoNumbers.java`
+- `ReverseLinkedList.java`
+- `deleteNthNodeFromEnd.java`
+- `odd_even_linked_list.java`
+- `deleteMiddleOfLinkedList.java`
+- `insert_into_a_circular_linked_list.java`
+- `Patition_List.java`
+- `ConvertBinarySearchTreeToSortedDLL.java`
+- `MergerKSortedLists(Priority_Queue).java`
 
-**When to use:** You need to efficiently track the K largest/smallest elements, or find order statistics (like the median) in a dynamic dataset.
+## 🥞 Stacks & Queues
+- `validPararenthesis.java`
+- `MinAddToMakeParenthesisValid.java`
+- `Minimum_Remove_To_Make_Valid_Parenthesis.java`
+- `removeAllAdjacentDuplicates.java`
+- `Optimized_RemoveAllAdjacentDuplicatesInStrings2.java`
+- `DailyTemperatures`
+- `NextGreaterElement2.java`
+- `onlineStockSpan.java`
+- `asteroidCollision_Own_Solution.java`
+- `evaluateReversePolishNotation.java`
+- `CarFleet.java`
 
----
+## 🏆 Greedy & Heaps
+- `taskScheduler.java`
+- `taskScheduler2.java`
+- `meetingRooms3.java`
+- `MeetingRooms2.java`
+- `minimumNumberofArrowstoBurstBalloons.java`
+- `gasStation.java`
+- `maximumPerformanceOfATeam.java`
+- `maximumSubsequenceScore.java`
+- `totalCosttoHireKWorkers.java`
+- `singleThreadedCPU.java`
+- `processTasksUsingServers.java`
 
-## 🧮 Dynamic Programming
+## 🏗️ System Design & Data Structures
+- `LRUCache`
+- `implementTrie.java`
+- `designAddandSearchWordsDataStructure.java`
+- `timeBasedKeyValueStore.java`
+- `findMedianFromDataStream.java`
+- `binarySearchTreeIterator.java`
+- `SparseVectors.java`
+- `1429_FirstUniqueNumber.java`
+- `designAFoodRatingSystem.java`
 
-| Problem | Primary Data Structure(s) | Key Logic / Technique |
-|---|---|---|
-| Word Break | Boolean Array (DP table) | Building up feasibility for substring prefixes |
-
-**When to use:** The problem has overlapping subproblems and optimal substructure — i.e., larger solutions can be built from smaller, cached results.
-
----
-
-## #️⃣ Hashing / Prefix Sum
-
-| Problem | Primary Data Structure(s) | Key Logic / Technique |
-|---|---|---|
-| Two Sum | HashMap | Complement tracking for O(n) lookup |
-| Count the Number of Nice Subarrays | HashMap | Prefix sum approach to count odd number counts |
-
-**When to use:** You need O(1) lookups for complements or counts, or you want to reduce a subarray problem to a prefix difference check.
-
----
-
-## 🔀 Problems with Multiple Patterns
-
-Several problems can be solved using more than one valid approach. Understanding the alternatives deepens pattern recognition.
-
-### 1. Sliding Window Median
-- **Current:** Two Heaps (PriorityQueues) — O(log k) per operation.
-- **Alternative:** Sliding Window + Balanced BST (`TreeMap` in Java) — similar complexity, handles removals more naturally.
-
-### 2. Number of Islands
-- **Current:** BFS using a Queue.
-- **Alternative:** DFS (as seen in *Max Area of Island*). BFS and DFS are interchangeable for connected-component problems in a grid.
-
-### 3. Capacity to Ship Packages Within D Days
-- **Current:** Binary Search on Answer + Greedy feasibility check — optimal approach.
-- **Alternative:** A DP-based partition approach is theoretically possible but far less efficient for the given constraints.
-
-### 4. Meeting Rooms II
-- **Current:** Min-Heap tracking the earliest ending room.
-- **Alternative:** Two Pointers / Chronological Ordering — sort start and end times separately, then iterate to find the maximum number of concurrent meetings.
-
----
-
-## 💡 Pattern Recognition Cheat Sheet
-
-| If the problem asks for... | Consider... |
-|---|---|
-| Max/min in a contiguous window | Sliding Window |
-| Pairs/triplets summing to a target | Two Pointers |
-| All possible combinations/subsets | Backtracking |
-| Connected components / shortest path | BFS / DFS |
-| Scheduling or overlap detection | Greedy / Intervals |
-| The K largest or smallest elements | Heap |
-| Overlapping subproblems | Dynamic Programming |
-| O(1) lookups by value | HashMap / Hashing |
-| Counting subarrays with a property | Prefix Sum |
-
----
-
-*Happy coding! ⚡ Focus on recognizing the pattern first — the implementation follows naturally.*
+## 📋 Miscellaneous
+- `resumt.txt`
+- `rotateImage.java`
+- `SetMatrixZeroes.java`
+- `battleshipsInBoard.java`
+- `plusOne.java`
+- `maximum_swap.java`
+- `randomPick_with_Weight.java`
+- `permutations.java`
+- `subsets.java`
+- `combinations.java`
