@@ -40,6 +40,5 @@ __Horizontal Scaling__ : we can use multiple crawlers instead of depending entir
 - (dont say this if interviewer doesnt ask) - we'll maintain a hashtable with URLS that are visited. So that same URL is not crawled twice(preventing duplication).
 - when we have thousands of crawlers hitting the same domain (like nytimes.com/sports, nytimes.com/international), then we need to do rate limiting to prevent these crawlers from DDosing that site.
 - __Rate Limiting__: we can use a __distributed global rate limiter__ like __redis__ with __sliding window rate limiter__ so that different crawler workers will check redis before hitting the same domain.
-    __scenario__ if both __workerA__ and __workerB__ want to crawl news.com and they check redis. __workerA__ gets greenlight but __workerB__ doesnt get permission. workerB will add the URL to the retry queue.
-  
+    __scenario__ if both __workerA__ and __workerB__ want to crawl news.com and they check redis. __workerA__ gets greenlight but __workerB__ doesnt get permission. workerB will add a __jitter__ random wait time and retry with redis rate limiter again.   
 -  
