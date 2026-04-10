@@ -14,40 +14,60 @@
  * }
  */
 class Solution {
-    public List<List<Integer>> verticalOrder(TreeNode root) {
+    public List<List<Integer>> verticalTraversal(TreeNode root) {
+        TreeMap<Integer, TreeMap<Integer, PriorityQueue<Integer>>> map = new TreeMap<>();
 
-        // TreeMap to map column with Node value and store the pair in sorted order by column. 
-        Map<Integer,List<Integer>> map = new TreeMap<>();
-        Queue<Pair<Integer,TreeNode>> q = new LinkedList<>();
+        Queue<Node> q= new LinkedList<>();
+
+        q.add(new Node(root,0,0));
+
+        while(!q.isEmpty()){
+            Node node = q.poll();
+
+            int r = node.row;
+            int c = node.col;
+            TreeNode tNode = node.node;
+            int val = tNode.val;
+
+            map.computeIfAbsent(c, k-> new TreeMap<Integer, PriorityQueue<Integer>>())
+            .computeIfAbsent(r, k-> new PriorityQueue<Integer>())
+            .add(val);
+
+            if(tNode.left!=null){
+                q.add(new Node(tNode.left, r+1, c-1));
+
+            }
+
+            if(tNode.right!=null){
+                q.add(new Node(tNode.right,r+1, c+1));
+            }
+        }
 
         List<List<Integer>> result = new ArrayList<>();
 
-        q.add(new Pair(0,root));
-
-        while(!q.isEmpty()){
-            Pair<Integer,TreeNode> item = q.poll();
-
-            Integer col = item.getKey();
-            TreeNode node = item.getValue();
-
-            // map column to the node value in TreeMap
-            map.putIfAbsent(col, new ArrayList<>());
-            map.get(col).add(node.val);
-
-            if(node.left!=null){
-                q.add(new Pair(col-1,node.left));
-            } 
-            if(node.right!=null){
-                q.add(new Pair(col+1, node.right));
+        for(TreeMap<Integer, PriorityQueue<Integer>> rowMap : map.values()){
+            List<Integer> colList = new ArrayList<>();
+            for(PriorityQueue<Integer> pq : rowMap.values() ){
+                while(!pq.isEmpty()){
+                    colList.add(pq.poll());
+                }
             }
-
+            result.add(colList);
         }
 
-        // iterate the columns in TreeMap by ascending order
-        // add the mapped node values List to result List where index = col
-        for(Integer col : map.keySet()){
-            result.add(map.get(col));
-        }
         return result;
+
+    }
+
+    class Node{
+        TreeNode node;
+        int row;
+        int col;
+
+        public Node(TreeNode node, int row, int col){
+            this.node= node;
+            this.row=row;
+            this.col = col;
+        }
     }
 }
