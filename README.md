@@ -313,6 +313,9 @@ A collection of Java solutions categorized by data structures and algorithmic pa
 
 ---
 
+## 15. TreeMap
+- `Time based Key-Value store`
+
 # 🌟 Problems Using Multiple Intersecting Patterns
 
 - **`shortestBridge.java`** → DFS + BFS  
