@@ -1,0 +1,52 @@
+// 930.Binary Subarrays With Sum
+
+class Solution {
+    public int numSubarraysWithSum(int[] nums, int goal) {
+        Map<Integer,Integer> map = new HashMap<>();
+        int sum=0;
+        int total = 0;
+
+        int k = goal;
+
+        map.put(0,1);
+
+        for(int i =0;i<nums.length;i++){
+            sum+=nums[i];
+
+            if(map.containsKey(sum-k)){
+                total+=map.get(sum-k);
+            }          
+
+            map.put(sum, map.getOrDefault(sum,0)+1);
+        }
+
+        return total;
+    }
+}
+
+//1248. Count Number of Nice Subarrays
+class Solution {
+    public int numberOfSubarrays(int[] nums, int k) {
+        Map<Integer, Integer> map = new HashMap<>();
+
+        map.put(0,1);
+        int sum=0;
+        
+        int count  = 0;
+
+        for(int i=0;i<nums.length;i++){
+
+           
+            sum += nums[i]%2;
+
+            if(map.containsKey(sum-k)){
+                count+= map.get(sum-k);
+            }
+
+             map.put(sum, map.getOrDefault(sum,0)+1);
+            
+        }
+
+        return count;
+    }
+}
