@@ -212,28 +212,39 @@ class Solution {
     }
 }
 
-//2415. Reverse Odd Levels of Binary Tree
+// 623. Add One Row to Tree
 class Solution {
-    public TreeNode reverseOddLevels(TreeNode root) {
-        dfs(root.left,root.right,1);
+    public TreeNode addOneRow(TreeNode root, int val, int depth) {
+
+        if(depth==1){
+            TreeNode newRoot = new TreeNode(val);
+            newRoot.left =root;
+            return newRoot;
+        }
+
+        dfs(root,val,1,depth);
         return root;
     }
 
-    private void dfs(TreeNode leftRoot, TreeNode rightRoot, int level){
-        if(leftRoot==null || rightRoot == null){
+    public void dfs(TreeNode root, int val, int count, int depth){
+        if(root==null){
             return;
         }
+        if(count == depth-1){
+            TreeNode left_copy = root.left;
+            TreeNode right_copy = root.right;
 
-        if(level%2!=0){
-            int temp = leftRoot.val;
-            leftRoot.val = rightRoot.val;
-            rightRoot.val = temp;
-        
+            root.left = new TreeNode(val);
+            root.right = new TreeNode(val);
+
+            root.left.left = left_copy;
+            root.right.right = right_copy;
+
+            return;
+
         }
 
-        dfs(leftRoot.left, rightRoot.right, level+1);
-        dfs(leftRoot.right, rightRoot.left, level+1);
-
-
+        dfs(root.left, val, count+1, depth);
+        dfs(root.right, val, count+1, depth);
     }
 }
