@@ -211,3 +211,29 @@ class Solution {
         dfs(leftNode.right, rightNode.left, level + 1);
     }
 }
+
+//2415. Reverse Odd Levels of Binary Tree
+class Solution {
+    public TreeNode reverseOddLevels(TreeNode root) {
+        dfs(root.left,root.right,1);
+        return root;
+    }
+
+    private void dfs(TreeNode leftRoot, TreeNode rightRoot, int level){
+        if(leftRoot==null || rightRoot == null){
+            return;
+        }
+
+        if(level%2!=0){
+            int temp = leftRoot.val;
+            leftRoot.val = rightRoot.val;
+            rightRoot.val = temp;
+        
+        }
+
+        dfs(leftRoot.left, rightRoot.right, level+1);
+        dfs(leftRoot.right, rightRoot.left, level+1);
+
+
+    }
+}
