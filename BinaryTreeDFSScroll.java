@@ -174,3 +174,39 @@ class Solution {
 
     }
 }
+
+
+// 2415. Reverse Odd Levels of Binary Tree
+class Solution {
+    public TreeNode reverseOddLevels(TreeNode root) {
+        if (root == null) {
+            return null;
+        }
+        
+        // Start the DFS with the left and right children at level 1 (odd)
+        dfs(root.left, root.right, 1);
+        
+        return root;
+    }
+
+    private void dfs(TreeNode leftNode, TreeNode rightNode, int level) {
+        // Base case: Since it's a perfect binary tree, we only need to check one for null
+        if (leftNode == null || rightNode == null) {
+            return;
+        }
+
+        // If we are at an odd level, swap their values
+        if (level % 2 != 0) {
+            int temp = leftNode.val;
+            leftNode.val = rightNode.val;
+            rightNode.val = temp;
+        }
+
+        // Traverse symmetrically:
+        // 1. The "outer" nodes: Left child's left matches with Right child's right
+        dfs(leftNode.left, rightNode.right, level + 1);
+        
+        // 2. The "inner" nodes: Left child's right matches with Right child's left
+        dfs(leftNode.right, rightNode.left, level + 1);
+    }
+}
